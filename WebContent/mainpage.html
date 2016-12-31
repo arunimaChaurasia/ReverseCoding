@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="Sectors">
+
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Bread and Bucks</title>
+	<!-- <link rel="icon" type="image/png" href="Images/apple.png"> -->
+	<link rel="stylesheet" type="text/css" href="mainpage.css">
+</head>
+<body >
+<div ng-controller="getSector">
+	<main>
+		<header>
+			<h1>BREAD AND BUCKS</h1>
+		</header>
+		
+		<section>
+			<div id="nav-wrapper" >
+				<ul id="nav" class="">
+					<li><a href="">Home</a></li>
+					<li><a href="">SIGN IN</a></li>
+					<li><a href="">ABOUT</a></li>
+					<li><a href="">REVIEWS</a></li>
+					<li><a href="">*************** SECTORS *************** &#9662;</a>
+					<ul class="dropdown"  >
+					
+					
+						<li>{{getSector.content.symbol}}</li>
+						<li>
+					hello						
+						</li>
+						
+						
+					
+					</ul>
+
+
+
+
+					
+					</li>
+					
+				</ul>
+			</div>
+			<p>{{content.symbol}}</p>
+			<p>{{getSector.statustext}}</p>
+			
+		</section>
+		
+	</main>
+	<footer>
+		<p>
+			*DISCLAIMER:
+		</p>
+	
+	</footer>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+	</script>
+	<script type="text/javascript">
+	var app = angular.module('Sectors', []);
+	
+		
+			
+		
+		
+	
+		app.controller('getSector', function($scope, $http) {
+		
+			window.onload=function()
+			{
+					$http.get('http://localhost:8080/RestDemoService/sectorDisplay')
+					.then(function(response) {
+        $scope.content = response.data;
+		
+		$scope.content[i].name
+		
+        $scope.statuscode = response.status;
+        $scope.statustext = response.status;
+		});
+					var content,statustext;
+		content=$scope.content;
+		statustext=$scope.statustext;
+    };
+
+	});
+	
+	app.controller('MyCtrl',[ '$scope', '$http', function($scope,$http) {
+			
+			$scope.list = [];
+			$scope.headerText = 'Pass Below JSON object using AngularJS Spring MVC Controller';
+			
+			this.submit = function(UIname) {
+				$scope.name =  UIname;
+
+				var response = $http.post('http://localhost:8080/RestDemoService/sectorDisplay', $scope.name);
+				response.success(function(data, status, headers, config) {
+					$scope.list.push(data);
+				});
+				response.error(function(data, status, headers, config) {
+					alert( "Exception details: " + JSON.stringify({data: data}));
+				});
+				
+		//Empty list data after process
+
+				$scope.list = [];
+				
+			};
+		}]);
+	
+	
+</script>
+	
+</body>
+</html>
