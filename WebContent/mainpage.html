@@ -8,42 +8,39 @@
 	<link rel="stylesheet" type="text/css" href="mainpage.css">
 </head>
 <body >
-<div ng-controller="getSector">
+
 	<main>
 		<header>
 			<h1>BREAD AND BUCKS</h1>
 		</header>
 		
 		<section>
-			<div id="nav-wrapper" >
-				<ul id="nav" class="">
-					<li><a href="">Home</a></li>
-					<li><a href="">SIGN IN</a></li>
-					<li><a href="">ABOUT</a></li>
-					<li><a href="">REVIEWS</a></li>
-					<li><a href="">*************** SECTORS *************** &#9662;</a>
-					<ul class="dropdown"  >
+			<div id="nav-wrapper" ng-controller="getSector as gs" >
+				<ul id="nav">
+					<li><a>Home</a></li>
+					<li><a>SIGN IN</a></li>
+					<li><a>ABOUT</a></li>
+					<li><a>REVIEWS</a></li>
+					<li><a>*************** SECTORS *************** &#9662;</a>
+						<ul class="dropdown" >
+						<li ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol)"><a>{{item.name}}  {{item.symbol}}</a><br></li>
+							<li>
+								
+							</li>
+							
+							
 					
-					
-						<li>{{getSector.content.symbol}}</li>
-						<li>
-					hello						
-						</li>
-						
-						
-					
-					</ul>
-
-
-
-
-					
+						</ul>
 					</li>
 					
 				</ul>
-			</div>
-			<p>{{content.symbol}}</p>
-			<p>{{getSector.statustext}}</p>
+				
+				
+	
+				</div>
+
+
+
 			
 		</section>
 		
@@ -60,55 +57,44 @@
 	<script type="text/javascript">
 	var app = angular.module('Sectors', []);
 	
-		
-			
-		
-		
-	
-		app.controller('getSector', function($scope, $http) {
+	app.controller('getSector', function($scope, $http) {
 		
 			window.onload=function()
 			{
-					$http.get('http://localhost:8080/RestDemoService/sectorDisplay')
+
+				$http.get('http://localhost:8080/RestDemoService/sectorDisplay')
 					.then(function(response) {
         $scope.content = response.data;
-		
-		$scope.content[i].name
-		
-        $scope.statuscode = response.status;
+        
         $scope.statustext = response.status;
-		});
-					var content,statustext;
-		content=$scope.content;
-		statustext=$scope.statustext;
-    };
 
-	});
-	
-	app.controller('MyCtrl',[ '$scope', '$http', function($scope,$http) {
-			
-			$scope.list = [];
-			$scope.headerText = 'Pass Below JSON object using AngularJS Spring MVC Controller';
-			
-			this.submit = function(UIname) {
-				$scope.name =  UIname;
-
-				var response = $http.post('http://localhost:8080/RestDemoService/sectorDisplay', $scope.name);
-				response.success(function(data, status, headers, config) {
-					$scope.list.push(data);
-				});
-				response.error(function(data, status, headers, config) {
-					alert( "Exception details: " + JSON.stringify({data: data}));
-				});
-				
-		//Empty list data after process
-
-				$scope.list = [];
-				
+		
+        
+											});
+					
 			};
-		}]);
 	
+	this.submit = function(UIname,UIsymbol) {
 	
+	var varname = {name:UIname,symbol:UIsymbol};
+    var jsonv = JSON.stringify(varname);
+	console.log(jsonv);
+
+		$http.post('http://localhost:8080/RestDemoService/securityDisplay',jsonv,{'Content':'application/json','Accept':'application/json'})
+		.then(function(response){			//Anonymus function for success callback
+		
+			console.log(response.data);		//Prints success log
+			
+			
+		},function(response){				//Anonymus function for error callback
+		
+			console.log("There was an error: " + response.status + " " + response.statusText);
+											//Prints error log
+							});
+			
+		};
+	
+	});
 </script>
 	
 </body>

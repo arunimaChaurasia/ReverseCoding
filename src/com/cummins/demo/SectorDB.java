@@ -9,6 +9,7 @@ public class SectorDB {
 		//ArrayList<Sector> sectors    = new ArrayList<Sector>();
 		Sector newSector=new Sector();
 		Sector newSector1=new Sector();
+		Sector newSector3=new Sector();
 		
 		newSector1.setName("automobile");
 		newSector1.setSymbol("auto");
@@ -17,6 +18,9 @@ public class SectorDB {
 			newSector.setName("Pharmaceutical");
 			newSector.setSymbol("PHRM");
 			sectors.add(newSector);
+			newSector3.setName("Consumer Goods");
+			newSector3.setSymbol("CONSGD");
+			sectors.add(newSector3);
 		
 	}
 	public ArrayList<Sector> returnJson()

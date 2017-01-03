@@ -1,18 +1,13 @@
 package com.cummins.demo;
-import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 //@EnableWebMvc
@@ -38,10 +33,10 @@ public class DemoService {
 	 }
 	 
 	 @RequestMapping( value="/securityDisplay",method=RequestMethod.POST,produces="application/json",consumes="application/json")
-	 public @ResponseBody String getSecurity(@RequestBody Sector sector )
+	 public @ResponseBody String getSecurity( @RequestBody Sector sector )
 	 {
-		
-		if(sector.getSymbol()=="auto")
+		 System.out.println(sector.getSymbol());
+		if(sector.getSymbol().equalsIgnoreCase("auto"))
 		{
 			 SecurityDB securitydb=new SecurityDB();
 		
@@ -55,7 +50,7 @@ public class DemoService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("service return called");
+		System.out.println("service return  called");
 		 return jsonInString;
 		}
 		else
