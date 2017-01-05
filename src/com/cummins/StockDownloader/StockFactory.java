@@ -1,4 +1,4 @@
-package com.cummins.demoDAO;
+package com.cummins.StockDownloader;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -29,10 +29,10 @@ public class StockFactory {
     System.out.println("Enter the company name");
     String symbol=in.nextLine();
     Stock stock=new Stock();
-	StockDownloader stockdownloader=new StockDownloader(stock,symbol,start,end);
+	HistoricalStock stockdownloader=new HistoricalStock(stock,symbol,start,end);
 	
 	
-	StockFetcher.getStock(stock,symbol);
+	CurrentStockData.getStock(stock,symbol);
 //	System.out.println(stock.getAveragePrice());
 //	System.out.println(stock.getOpens());
 //	System.out.println(stock.getEps());

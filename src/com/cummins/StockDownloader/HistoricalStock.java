@@ -1,4 +1,4 @@
-package com.cummins.demoDAO;
+package com.cummins.StockDownloader;
 import com.cummins.Stocks.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.net.URLConnection;
 import java.util.Scanner;
 
 
-public class StockDownloader {
+public class HistoricalStock {
 	/*public static final int DATE=0;
 	public static final int OPEN=1;
 	public static final int HIGH=2;
@@ -31,7 +31,7 @@ public class StockDownloader {
 	
 	
 	
-	public StockDownloader(Stock s,String symbol,GregorianCalendar start,GregorianCalendar end){
+	public HistoricalStock(Stock s,String symbol,GregorianCalendar start,GregorianCalendar end){
 		
 		dates=new ArrayList<GregorianCalendar>();
 		opens=new ArrayList<Double>();

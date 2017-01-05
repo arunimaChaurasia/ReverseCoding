@@ -1,4 +1,4 @@
-package com.cummins.demoDAO;
+package com.cummins.StockDownloader;
 
 
 import java.io.BufferedReader;
@@ -17,7 +17,7 @@ import org.jsoup.select.Elements;
 
 import com.cummins.Stocks.Stock;
 
-public class StockFetcher {  
+public class CurrentStockData {  
 	
 	/*
 	* Returns a Stock Object that contains info about a specified stock.
@@ -30,7 +30,7 @@ public class StockFetcher {
 		
 		String eps;
 		
-		String exchange=new String();
+		
 		try { 
 	
 			// Retrieve CSV File
@@ -95,7 +95,7 @@ public class StockFetcher {
 			s1.setTotalTradedVolume(stockInfo1[69]);
 		
 		} catch (IOException e) {
-			Logger log = Logger.getLogger(StockFetcher.class.getName()); 
+			Logger log = Logger.getLogger(CurrentStockData.class.getName()); 
 			log.log(Level.SEVERE, e.toString(), e);
 			
 		}
