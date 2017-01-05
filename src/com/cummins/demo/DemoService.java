@@ -59,5 +59,32 @@ public class DemoService {
 		}
 	 }
 	 
+	 @RequestMapping( value="/Login",method=RequestMethod.POST,produces="application/json",consumes="application/json")
+	 public @ResponseBody  void loginDetails( @RequestBody LoginCheck login )
+	 {
+		 System.out.println(login.getUserName());
+//		if(sector.getSymbol().equalsIgnoreCase("auto"))
+//		{
+//			 SecurityDB securitydb=new SecurityDB();
+//		
+//		 ObjectMapper mapper = new ObjectMapper();
+//
+//		 //Object to JSON in String
+//		 String jsonInString=new String();
+//		try {
+//			jsonInString = mapper.writeValueAsString(securitydb.returnJson());
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		System.out.println("service return  called");
+//		 return jsonInString;
+//		}
+//		else
+//		{
+//			return "not valid value";
+//		}
+	}
+	 
 	
 }
