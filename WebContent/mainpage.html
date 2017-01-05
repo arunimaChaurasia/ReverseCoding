@@ -14,16 +14,56 @@
 			<h1>BREAD AND BUCKS</h1>
 		</header>
 		
-		<section>
-			<div id="nav-wrapper" ng-controller="getSector as gs" >
+		<section ng-controller="getSector as gs" >
+			<div class="menu">
+				<!-- Button to open the modal login form -->
+				<button onclick="document.getElementById('id01').style.display='block'" style="margin-left:70%;">Login</button>
+
+				<!-- The Modal -->
+				<div id="id01" class="modal">
+					<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+					<!-- Modal Content -->
+					<form class="modal-content animate" >
+						<div class="imgcontainer">
+							<img src="Images/login_img.png" alt="Login Image" class="avatar">
+						</div>
+
+						<div class="container">
+							<label><b>Username</b></label>
+								<input type="text" placeholder="Enter Username" id="uname" required><br>
+
+							<label><b>Password</b></label>
+								<input type="password" placeholder="Enter Password" id="psw" required><br>
+
+							<button type="submit" ng-click="gs.login()">Login</button><br>
+		
+						</div>
+
+						<div class="containercan" >
+				
+							<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+							
+						</div>
+					</form>
+				</div>
+
+			
+			</div>
+		
+		
+			<div id="nav-wrapper" >
 				<ul id="nav">
-					<li><a>Home</a></li>
-					<li><a>SIGN IN</a></li>
-					<li><a>ABOUT</a></li>
-					<li><a>REVIEWS</a></li>
-					<li><a>*************** SECTORS *************** &#9662;</a>
+					
+						<li><a>Home</a></li>
+						<li><a>MY PAGE</a></li>
+						<li><a>SIGN IN</a></li>
+						<li><a>ABOUT</a></li>
+						<li><a>REVIEWS</a></li>
+						<li><a>********************* SECTORS ********************* &#9662;</a>
+				
 						<ul class="dropdown" >
-						<li ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol)"><a>{{item.name}}  {{item.symbol}}</a><br></li>
+						<li ng-repeat="item in content" ng-click="gs.submit(item.name)"><a class="dropanch">{{item.name}}  {{item.symbol}}</a><br></li>
 							<li>
 								
 							</li>
@@ -52,6 +92,19 @@
 	
 	</footer>
 	</div>
+	<script>
+			// Get the modal
+			var modal = document.getElementById('id01');
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+					if (event.target == modal) {
+						modal.style.display = "none";
+					}
+			}
+	</script>
+
+
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
 	</script>
 	<script type="text/javascript">
@@ -74,13 +127,10 @@
 					
 			};
 	
-	this.submit = function(UIname,UIsymbol) {
-	
-	var varname = {name:UIname,symbol:UIsymbol};
-    var jsonv = JSON.stringify(varname);
-	console.log(jsonv);
+	this.submit = function(UIname) {
+		var varname =  UIname;
 
-		$http.post('http://localhost:8080/RestDemoService/securityDisplay',jsonv,{'Content':'application/json','Accept':'application/json'})
+		$http.post('http://localhost:8080/RestDemoService/securityDisplay',varname)
 		.then(function(response){			//Anonymus function for success callback
 		
 			console.log(response.data);		//Prints success log
@@ -93,6 +143,13 @@
 							});
 			
 		};
+		
+	this.login=function()
+	{ var Uname=document.getElementById('uname');
+	  var Upswd=document.getElementById('psw');
+	  this.submit(Uname,Upswd);
+	
+	};
 	
 	});
 </script>
