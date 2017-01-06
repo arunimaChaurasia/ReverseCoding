@@ -23,6 +23,7 @@ public class SectorDB {
 			
 			while(rst.next())
 			{
+				
 				Sector sector = new Sector();
 				sector.setName(rst.getString("sector_name"));
 				sector.setSymbol(rst.getString("sector_code"));

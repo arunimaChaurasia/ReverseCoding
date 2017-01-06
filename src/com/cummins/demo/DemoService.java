@@ -1,6 +1,7 @@
 package com.cummins.demo;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,9 +12,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.cummins.PredictionModel.Prediction;
 import com.cummins.StockDownloader.StockFactory;
 import com.cummins.Stocks.Security;
+import com.cummins.UserDetails.SavedDetails;
+import com.cummins.UserDetails.UserFactory;
+import com.cummins.UserDetails.Userdetail;
 import com.cummins.demoDAO.DataBaseConn;
 import com.cummins.demoDAO.SectorDB;
 import com.cummins.demoDAO.SecurityDB;
+import com.cummins.demoDAO.UserDetailsDB;
+import com.cummins.demoDAO.UserValidation;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -67,29 +73,35 @@ public class DemoService {
 	}
 
 	@RequestMapping(value = "/Login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public @ResponseBody void loginDetails(@RequestBody LoginCheck login) {
+	public @ResponseBody String loginDetails(@RequestBody Userdetail login) {
 		System.out.println(login.getUserName());
-		// if(sector.getSymbol().equalsIgnoreCase("auto"))
-		// {
-		// SecurityDB securitydb=new SecurityDB();
-		//
-		// ObjectMapper mapper = new ObjectMapper();
-		//
-		// //Object to JSON in String
-		// String jsonInString=new String();
-		// try {
-		// jsonInString = mapper.writeValueAsString(securitydb.returnJson());
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
-		// System.out.println("service return called");
-		// return jsonInString;
-		// }
-		// else
-		// {
-		// return "not valid value";
-		// }
+		int status;
+		UserValidation user=new UserValidation();
+		status=user.getUser(conn, login);
+		
+		if(status==1)
+		{
+			//ArrayList<SavedDetails> savedetail = new ArrayList<SavedDetails>();
+			UserFactory userfactory=new UserFactory(conn,login);
+			ObjectMapper mapper = new ObjectMapper();
+
+			// Object to JSON in String
+			String jsonInString = new String();
+			try {
+				jsonInString = mapper.writeValueAsString(userfactory);
+				// jsonInSell= mapper.writeValueAsString(predictStocks.)
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println("service return  called");
+			return jsonInString;
+		}
+		else
+		{
+			return "Invalid UserName or Password";
+		}
+		
 	}
 
 }
