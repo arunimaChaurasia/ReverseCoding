@@ -1,4 +1,4 @@
-package com.cummins.demo;
+package com.cummins.Stocks;
 
 import java.io.Serializable;
 

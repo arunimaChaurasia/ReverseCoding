@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import com.cummins.demo.Sector;
+import com.cummins.Stocks.Sector;
 
 public class SectorDB {
 	ArrayList<Sector> sectors    = new ArrayList<Sector>();

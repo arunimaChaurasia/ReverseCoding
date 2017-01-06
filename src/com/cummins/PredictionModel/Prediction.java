@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 public class Prediction {
 
-	ArrayList<Stock> buyStock;
+	ArrayList<Stock> buyStock=new ArrayList<Stock>();
 	
 
-	ArrayList<Stock> sellStock;
+	ArrayList<Stock> sellStock=new ArrayList<Stock>();;
 
-	public void getPrediction(ArrayList<Stock> stocks) {
+	public Prediction(ArrayList<Stock> stocks) {
 		
 		Change change=new Change();
 		change.delta(stocks,this);

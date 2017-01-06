@@ -1,5 +1,6 @@
 package com.cummins.StockDownloader;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
@@ -9,8 +10,8 @@ import com.cummins.Stocks.*;
 
 public class StockFactory {
 	
-	public void stockFactory(){
-	Scanner in=new Scanner(System.in);
+	public void stockFactory(   ArrayList<Stock> stocks){
+	//Scanner in=new Scanner(System.in);
 	GregorianCalendar today = new GregorianCalendar();
 	int todayMonth = today.get(Calendar.MONTH);
 
@@ -26,13 +27,16 @@ public class StockFactory {
     int historyYear=calendar.get(Calendar.YEAR);
     GregorianCalendar start=new GregorianCalendar(todayYear,todayMonth,todayDayOfMonth);
     GregorianCalendar end=new GregorianCalendar(historyYear,historyMonth,historyDayOfMonth);
-    System.out.println("Enter the company name");
-    String symbol=in.nextLine();
-    Stock stock=new Stock();
-	HistoricalStock stockdownloader=new HistoricalStock(stock,symbol,start,end);
+//    System.out.println("Enter the company name");
+//    String symbol=in.nextLine();
+
+    for(int i=0;i<stocks.size();i++)
+    {
+	HistoricalStock stockdownloader=new HistoricalStock(stocks.get(i),stocks.get(i).getCode(),start,end);
 	
 	
-	CurrentStockData.getStock(stock,symbol);
+	CurrentStockData.getStock(stocks.get(i),stocks.get(i).getCode());
+    }
 //	System.out.println(stock.getAveragePrice());
 //	System.out.println(stock.getOpens());
 //	System.out.println(stock.getEps());

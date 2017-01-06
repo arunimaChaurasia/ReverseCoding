@@ -5,9 +5,7 @@ import java.util.GregorianCalendar;
 
 public class Stock {
 
-	public Stock() {
-		// TODO Auto-generated constructor stub
-	}
+	String code;
 	String freeFloatMarketCap;
 	String change;
 	String deliveryQuantity;
@@ -78,7 +76,11 @@ public class Stock {
 		
 	} 
 	
-   public void setEps(String eps) {
+   public Stock() {
+		// TODO Auto-generated constructor stub
+	}
+
+public void setEps(String eps) {
 		this.eps = eps;
 	}
 
@@ -335,6 +337,14 @@ public class Stock {
 
 	public ArrayList<Double> getAdjcloses() {
 		return adjcloses;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	
