@@ -5,12 +5,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.cummins.UserDetails.SavedDetails;
+import com.cummins.UserDetails.AccountDetail;
 import com.cummins.UserDetails.Userdetail;
 
-public class SavedDetailDB {
+public class AccountDetaillDB {
 	
-	public void getUser(DataBaseConn connection, Userdetail login,ArrayList<SavedDetails> savedetail) {
+	public void getUser(DataBaseConn connection, Userdetail login,ArrayList<AccountDetail> savedetail) {
 		String password = new String();
 		PreparedStatement statement = null;
 		int i=0;

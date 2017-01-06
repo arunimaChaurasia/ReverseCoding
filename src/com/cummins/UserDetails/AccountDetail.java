@@ -3,10 +3,10 @@ package com.cummins.UserDetails;
 import java.sql.Date;
 import java.util.Calendar;
 
-public class SavedDetails {
+public class AccountDetail {
 	String Security_code,status;
 	int volume, curr_price;
-	Calendar last_update_date;
+	Date last_update_date;
 	Date sell_date;
 	Date buy_date;
 	public String getSecurity_code() {
@@ -33,10 +33,10 @@ public class SavedDetails {
 	public void setCurr_price(int curr_price) {
 		this.curr_price = curr_price;
 	}
-	public Calendar getLast_update_date() {
+	public Date getLast_update_date() {
 		return last_update_date;
 	}
-	public void setLast_update_date(Calendar last_update_date) {
+	public void setLast_update_date(Date last_update_date) {
 		this.last_update_date = last_update_date;
 	}
 	public Date getSell_date() {
