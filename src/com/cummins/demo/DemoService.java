@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cummins.demoDAO.DataBaseConn;
+import com.cummins.demoDAO.SectorDB;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
@@ -14,16 +16,20 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class DemoService {
 	 
+	static DataBaseConn conn =new DataBaseConn();
+	
 	 @RequestMapping( value="/sectorDisplay",method=RequestMethod.GET,produces="application/json")
 	 public @ResponseBody String getSector()
 	 {
-		 SectorDB sector=new SectorDB();
+		
+		 SectorDB sectors=new SectorDB();
+		
 		 ObjectMapper mapper = new ObjectMapper();
 
 		 //Object to JSON in String
 		 String jsonInString=new String();
 		try {
-			jsonInString = mapper.writeValueAsString(sector.returnJson());
+			jsonInString = mapper.writeValueAsString(sectors.getSectors(conn));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -12,14 +12,7 @@ import java.util.Scanner;
 
 
 public class HistoricalStock {
-	/*public static final int DATE=0;
-	public static final int OPEN=1;
-	public static final int HIGH=2;
-	public static final int LOW=3;
-	public static final int CLOSE=4;
-	public static final int VOLUME=5;
-	public static final int ADJCLOSE=6;
-	*/
+	
 	
 	private ArrayList<GregorianCalendar> dates;
 	private ArrayList<Double> opens;
