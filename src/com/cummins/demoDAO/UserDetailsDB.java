@@ -18,7 +18,7 @@ public class UserDetailsDB {
 		String query = "select * from user_details where email_id=?";
 		try {
 			statement = connection.getConnection().prepareStatement(query);
-			statement.setString(1, user.getUserName());
+			statement.setString(1, user.getEmail_id());
 
 			ResultSet rst = statement.executeQuery();
 

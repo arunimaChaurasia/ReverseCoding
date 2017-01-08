@@ -23,7 +23,7 @@ public class SignUp {
 			statement.setString(2, signup.getFirst_name());
 			statement.setString(3,signup.getLast_name());
 			statement.setLong(4,signup.getPhn_no());
-			statement.setString(5,signup.getUserName());
+			statement.setString(5,signup.getEmail_id());
 			statement.setString(6,signup.getPassword());
 			statement.executeQuery();
 		} catch (SQLException e) {

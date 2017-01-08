@@ -17,7 +17,7 @@ public class AccountDetaillDB {
 		String query = "select * from account_details where entry_id IN (select entry_id from user_acc_map where user_id =(select user_id from user_details where email_id=?))";
 		try {
 			statement = connection.getConnection().prepareStatement(query);
-			statement.setString(1, login.getUserName());
+			statement.setString(1, login.getEmail_id());
 
 			ResultSet rst = statement.executeQuery();
 

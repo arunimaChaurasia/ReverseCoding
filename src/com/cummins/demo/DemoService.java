@@ -76,7 +76,7 @@ public class DemoService {
 
 	@RequestMapping(value = "/Login", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public @ResponseBody String loginDetails(@RequestBody Userdetail login) {
-		System.out.println(login.getUserName());
+		System.out.println(login.getEmail_id());
 		int status;
 		UserValidation user = new UserValidation();
 		status = user.getUser(conn, login);
@@ -106,7 +106,7 @@ public class DemoService {
 
 	@RequestMapping(value = "/SignUp", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public @ResponseBody String SignUpDetails(@RequestBody Userdetail signup) {
-		System.out.println(signup.getUserName());
+		System.out.println(signup.getEmail_id());
 		int status;
 		UserValidation user = new UserValidation();
 		status = user.getUser(conn, signup);

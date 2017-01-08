@@ -17,7 +17,7 @@ public class UserValidation {
 		String query = "select password from user_details where email_id=?";
 		try {
 			statement = connection.getConnection().prepareStatement(query);
-			statement.setString(1, login.getUserName());
+			statement.setString(1, login.getEmail_id());
 
 			ResultSet rst = statement.executeQuery();
 

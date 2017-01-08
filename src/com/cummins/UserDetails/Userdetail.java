@@ -1,19 +1,19 @@
 package com.cummins.UserDetails;
 
+import java.io.Serializable;
 
-
-public class Userdetail {
+public class Userdetail implements Serializable{
 	String first_name;
 	String last_name;
 	long phn_no;
 	String email_id,password;
 
-	public String getUserName() {
+	public String getEmail_id() {
 		return email_id;
 	}
 
-	public void setUserName(String userName) {
-		this.email_id = userName;
+	public void setEmail_id(String email_id) {
+		this.email_id = email_id;
 	}
 
 	public String getPassword() {
