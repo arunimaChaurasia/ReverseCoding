@@ -142,7 +142,7 @@
             <packageBranchRate>85</packageBranchRate>
             <regexes>
               <regex>
-                <pattern>com.cummins.demo.*</pattern>
+                <pattern>com.cummins.*</pattern>
                 <branchRate>90</branchRate>
                 <lineRate>80</lineRate>
               </regex>
