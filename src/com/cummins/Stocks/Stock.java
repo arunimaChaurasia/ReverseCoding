@@ -347,6 +347,11 @@ public void setEps(String eps) {
 		this.code = code;
 	}
 
+	public String getOpen() {
+		
+		return open;
+	}
+
 	
 	
 		
