@@ -1,23 +1,35 @@
 package com.cummins.demoDAO;
 
+import java.io.Serializable;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import com.cummins.UserDetails.Userdetail;
 
-public class SignUp {
+public class SignUp implements Serializable {
  
-	private static int user_id=0;
+	private static  int user_id;
 	public SignUp(DataBaseConn connection,Userdetail signup)
 	{
-		user_id ++;
+		
 		//String password = new String();
 		PreparedStatement statement = null;
+		Statement result_stmt=null;
 		int i=0;
-		String query = "insert into user_details values (user_id,first_name,last_name,phone_no,email_id,password) (?,?,?,?,?,?)";
+		String query_id="select max(user_id) as user_id1 from user_details";
+		String query = "insert into user_details values (first_name,last_name,phn_no,email_id,password)(?,?,?,?,?,?)";
 		
 		try {
+			result_stmt=connection.getConnection().createStatement();
+			ResultSet rst=result_stmt.executeQuery(query_id);
+			while (rst.next()) {
+				user_id=rst.getInt("user_id1");
+				
+			}
+			user_id++;
+			System.out.println(user_id);
 			statement = connection.getConnection().prepareStatement(query);
 			statement.setInt(1,user_id);
 			statement.setString(2, signup.getFirst_name());

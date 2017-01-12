@@ -17,6 +17,7 @@ import com.cummins.UserDetails.UserFactory;
 import com.cummins.UserDetails.Userdetail;
 import com.cummins.demoDAO.AccountDetaillDB;
 import com.cummins.demoDAO.DataBaseConn;
+import com.cummins.demoDAO.SaveDetailDB;
 import com.cummins.demoDAO.SectorDB;
 import com.cummins.demoDAO.SecurityDB;
 import com.cummins.demoDAO.SignUp;
@@ -120,12 +121,14 @@ public class DemoService {
 
 	}
 	
-	@RequestMapping(value = "/Save", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
+	@RequestMapping(value = "/Savenew", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public @ResponseBody String SaveDetails(@RequestBody AccountDetail savedetails) {
 		//System.out.println(signup.getUserName());
-		SaveDetails(savedetails);
+	SaveDetailDB save=new	SaveDetailDB();
+	save.getSaveDetailDB(conn,savedetails);
 		return "Details are saved";
 
 	}
 
 }
+ 

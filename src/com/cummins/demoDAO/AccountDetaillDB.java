@@ -22,7 +22,7 @@ public class AccountDetaillDB {
 			ResultSet rst = statement.executeQuery();
 
 			while (rst.next()) {
-				savedetail.get(i).setSecurity_code(rst.getString("security_code"));
+				savedetail.get(i).setSecurityCode(rst.getString("security_code"));
 				savedetail.get(i).setStatus(rst.getString("status"));
 				savedetail.get(i).setCurr_price(rst.getInt("current_price"));
 				savedetail.get(i).setVolume(rst.getInt("volume"));

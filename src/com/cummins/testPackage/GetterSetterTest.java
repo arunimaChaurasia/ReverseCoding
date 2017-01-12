@@ -8,7 +8,7 @@ import com.cummins.Stocks.Stock;
 import com.cummins.UserDetails.AccountDetail;
 import com.cummins.UserDetails.Userdetail;
 
-public class GetterSetter{
+public class GetterSetterTest{
 
 	@Test
 	    public void testSetOpen() {
@@ -25,8 +25,8 @@ public class GetterSetter{
 	@Test
 	public void testSetSecurityCode(){
 		AccountDetail accountdetail=new AccountDetail();
-		accountdetail.setSecurity_code("BHEL");
-		 assertTrue(accountdetail.getSecurity_code() == "BHEL");
+		accountdetail.setSecurityCode("BHEL");
+		 assertTrue(accountdetail.getSecurityCode() == "BHEL");
 		}
 	@Test
 	public void testSetDetailUser(){

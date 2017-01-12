@@ -1,19 +1,20 @@
 package com.cummins.UserDetails;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
 
-public class AccountDetail {
-	String Security_code,status;
+public class AccountDetail implements Serializable  {
+	private String securityCode,status;
 	int volume, curr_price;
 	Date last_update_date;
 	Date sell_date;
 	Date buy_date;
-	public String getSecurity_code() {
-		return Security_code;
+	public String getSecurityCode() {
+		return securityCode;
 	}
-	public void setSecurity_code(String security_code) {
-		Security_code = security_code;
+	public void setSecurityCode(String securityCode) {
+		this.securityCode = securityCode;
 	}
 	public String getStatus() {
 		return status;

@@ -1,47 +1,177 @@
+
 <!DOCTYPE html>
 <html ng-app="Sectors">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <head lang="en">
 	<meta charset="UTF-8">
-	<title>Bread and Bucks</title>
-	<!-- <link rel="icon" type="image/png" href="Images/apple.png"> -->
+	<title>BREAD 'N' BUCKS</title>
+	<link rel="icon" type="image/png" href="C:\Users\aditi\git\BreadNBucks\src\com\cummins\demo\images\favicon.ico">
 	<link rel="stylesheet" type="text/css" href="mainpage.css">
 </head>
-<body >
 
+<body >
 	<main>
 		<header>
-			<h1>BREAD AND BUCKS</h1>
+			<div class="w3-top">
+  <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
+    <li>
+      <a class="w3-margin-left"><b>BREAD 'N' BUCKS</b></a>
+    </li>
+    <!-- Float links to the right. Hide them on small screens -->
+  </ul>
+</div>
 		</header>
 		
-		<section>
-			<div id="nav-wrapper" ng-controller="getSector as gs" >
-				<ul id="nav">
-					<li><a>Home</a></li>
-					<li><a>SIGN IN</a></li>
-					<li><a>ABOUT</a></li>
-					<li><a>REVIEWS</a></li>
-					<li><a>*************** SECTORS *************** &#9662;</a>
-						<ul class="dropdown" >
-						<li ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol)"><a>{{item.name}}  {{item.symbol}}</a><br></li>
-							<li>
-								
-							</li>
-							
-							
-					
-						</ul>
-					</li>
-					
-				</ul>
+		<section  ng-controller="getSector as gs" >
+		
+			<div class="menu">
+				<!-- Button to open the modal login form -->
+				<button onclick="document.getElementById('id01').style.display='block'" style="margin-left:70%;">Login</button>
+
+				<!-- The Modal -->
+				<div id="id01" class="modal">
+					<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+
+					<!-- Modal Content -->
+					<form class="modal-content animate" >
+						<div class="imgcontainer">
+							<img src="images\login_img.png" alt="Login Image" class="avatar"></a>
+						</div>
+
+						<div class="container">
+							<label><b></b></label>
+								<input type="text" placeholder="Enter Email-id" id="uname" required><br>
+
+							<label><b></b></label>
+								<input type="password" placeholder="Enter Password" id="psw" required><br>
+
+							<button type="submit" ng-click="gs.login()">Login</button><br>
+		
+						</div>
+
+						<div class="containercan" >
 				
-				
-	
+							<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+							
+						</div>
+					</form>
 				</div>
 
-
-
 			
+			</div>
+		
+				
+		
+			   <div id="nav-wrapper">
+				<ul class="tab tab-pane fade in active">              
+					<li><a ng-click="gs.select(1)">HOME</a></li>
+					<li><a ng-click="gs.select(2)">MY PAGE </a><li>
+					<li><a ng-click="gs.select(3)">SIGN IN</a></li>
+					<li><a ng-click="gs.select(4)">ABOUT</a></li>
+					<div class="dropdown">
+					<li><a> SECTORS &#9662;</a>
+						<ul>
+						  <div class="dropdown-content">
+
+							<li ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol,'http://localhost:8080/RestDemoService/securityDisplay')"><a><t>{{item.name}}</t><br><t>{{item.symbol}}</t></a><br></li>
+					
+							</ul>
+						</div>
+					</li>
+					</div> 
+			</div>		
+				
+				
+<div class="form">
+      
+
+      
+        <div id="signup" class="Sgn"> 
+		
+          <h1>Sign Up for Free</h1>
+          
+          <form action="/" method="post">
+          
+          <div class="top-row">
+            <div class="field-wrap">
+              <label>First Name<span class="req">*</span>
+              </label>
+              <input type="text" required autocomplete="off" id="fname"/>
+            </div>
+        
+            <div class="field-wrap">
+              <label>Last Name<span class="req">*</span>
+              </label>
+              <input type="text"required autocomplete="off" id="lname"/>
+            </div>
+          </div>
+		  
+		  <div class="field-wrap">
+            <label>Mobile Number<span class="req">*</span>
+            </label>
+            <input type="phone" id="phone"/>
+         </div>
+         
+		<div class="field-wrap">
+            <label>Email Address<span class="req">*</span>
+            </label>
+            <input type="email"required autocomplete="off" id="eid"/>
+         </div> 
+          
+          <div class="field-wrap">
+            <label>Set A Password<span class="req">*</span>
+            </label>
+            <input type="password"required autocomplete="off" id="passwd"/>
+          </div>
+          
+          <button type="submit" class="button button-block">Get Started</button>
+		</div>
+		
+          
+          </form><!-- /form -->
+
+        </div><!-- tab-content -->
+        
+
+
+
+<!-- /MY PAGE -->
+	<div id="sector" class="mysec">
+
+		<img class="bckimg" src="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg">
+	
+		<table border=1>
+			<tr><th>COMPANY CODE</th><th>STATISTICS</th><th>CURRENT RATE</th><th>STATUS</th><th></th></tr>
+			<tr><th>BUY STOCK</th></tr>
+			<tr ng-repeat="sec in prediction.buyStock">
+				<td id="code">{{sec.code}}</td>
+				<td><td>EPS: {{sec.eps}}</td><td>AVERAGE PRICE: {{sec.averagePrice}}</td><td>DAY HIGH: {{sec.dayHigh}}</td><td>DAY LOW: {{sec.dayLow}}</td><td>FACEVALUE: {{sec.faceValue}}</td><td>TOTAL TRADED VOLUME: {{sec.totalTradedVolume}}</td> </td>
+				<td id="price">{{sec.lastPrice}} </td>
+				<td id="status">BUY</td>
+				<td><button ng-click="savedata()">SAVE</button></td>
+			</tr>
+			<tr><th>SELL STOCK</th></tr>
+			<tr ng-repeat="sec in prediction.sellStock">
+				<td id="code">{{sec.code}}</td>
+				<td>EPS: {{sec.eps}}<br>AVERAGE PRICE: {{sec.averagePrice}}<br>DAY HIGH: {{sec.dayHigh}}<br>DAY LOW: {{sec.dayLow}}<br>FACEVALUE: {{sec.faceValue}}<br>TOTAL TRADED VOLUME: {{sec.totalTradedVolume}}<br> </td>
+				<td id="price">{{sec.lastPrice}} </td>
+				<td id="status">SELL</td>
+				<td><button ng-click="savedata()">SAVE</button></td>
+			</tr>
+		</table>
+
+
+	<div id="mypage" class="mypagetable">
+		<img class="bckimg" href="images/download.jpg">
+		<br></br>
+		<table border=1>
+			<tr><th>COMPANY NAME</th><th>CURRENT RATE</th><th>STATUS</th></tr>
+			<tr><td>COMPANY</td><td>RATE</td><td>STATUS</td></tr>
+			<tr ng-repeat="cont in mypage"><td>{{cont.company}}</td><td>{{cont.rate}}</td><td>{{cont.status}}</td></tr>
+		</table>
+	</div>
 		</section>
 		
 	</main>
@@ -54,45 +184,8 @@
 	</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
 	</script>
-	<script type="text/javascript">
-	var app = angular.module('Sectors', []);
 	
-	app.controller('getSector', function($scope, $http) {
-		
-			window.onload=function()
-			{
-				$http.get('http://localhost:8080/RestDemoService/sectorDisplay')
-					.then(function(response) {
-        $scope.content = response.data;
-        
-        $scope.statustext = response.status;
-		
-        
-											});
-					
-			};
-	
-	this.submit = function(UIname,UIsymbol) {
-	
-	var varname = {name:UIname,symbol:UIsymbol};
-    var jsonv = JSON.stringify(varname);
-	console.log(jsonv);
-		$http.post('http://localhost:8080/RestDemoService/securityDisplay',jsonv,{'Content':'application/json','Accept':'application/json'})
-		.then(function(response){			//Anonymus function for success callback
-		
-			console.log(response.data);		//Prints success log
-			
-			
-		},function(response){				//Anonymus function for error callback
-		
-			console.log("There was an error: " + response.status + " " + response.statusText);
-											//Prints error log
-							});
-			
-		};
-	
-	});
-</script>
+	<script src="mainpagejs.js"></script>
 	
 </body>
 </html>
