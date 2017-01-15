@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+## BreadNBucks
+This project is intended to provide intelligent tips such to buy or sell the stock; based on the users selected sector.
 
-You can use the [editor on GitHub](https://github.com/The-Team-A/BreadNBucks/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+How to build : Build as a maven project.
+Pre-Requisities : Oracle Database should be set up. Please run the db scripts from here to create the database structure & then run the static_init to populate values in database for first time use.
+* Database_Model
+* Static_Data
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/The-Team-A/BreadNBucks/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+##Administration:
+	### Set up Jenkins
+	Download latest jenkins.war from here [Link] (https://updates.jenkins-ci.org/latest/jenkins.war)
+	Make sure that Java is set up in tohe system home 
+	start jenkins by java -jar <path to the jenkins war>\jenkins.war --httpPort=9090
+	
+	### Set up Sonar
+	Download latest from here https://www.sonarqube.org/downloads/ (url)
+	Unzip & run the sonar.bat from the bin.
+	Add below lines to maven settings in your <Home Dir>/.m2/settings.xml
+  
+	<profiles>
+	<profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Example for MySQL-->
+                <sonar.jdbc.url>
+                  jdbc:mysql://localhost:3306/sonar?useUnicode=true&amp;characterEncoding=utf8
+                </sonar.jdbc.url>
+                <sonar.jdbc.username>sonar</sonar.jdbc.username>
+                <sonar.jdbc.password>sonar</sonar.jdbc.password>
+ 
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>
+                  http://localhost:9000
+                </sonar.host.url>
+            </properties>
+        </profile>
+  </profiles>
+  </settings>
