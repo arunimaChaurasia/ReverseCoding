@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html ng-app="Sectors">
 <meta charset="UTF-8">
@@ -24,7 +23,7 @@
 </div>
 		</header>
 		
-		<section  ng-controller="getSector as gs" >
+		<section  ng-controller="getSector as gs">
 		
 			<div class="menu">
 				<!-- Button to open the modal login form -->
@@ -83,7 +82,9 @@
 					</div> 
 			</div>		
 				
-				
+				<div id="home">
+			<img class="bckimg" src="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg">
+				</div>
 <div class="form">
       
 
@@ -140,36 +141,48 @@
 <!-- /MY PAGE -->
 	<div id="sector" class="mysec">
 
-		<img class="bckimg" src="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg">
 	
-		<table border=1>
-			<tr><th>COMPANY CODE</th><th>STATISTICS</th><th>CURRENT RATE</th><th>STATUS</th><th></th></tr>
-			<tr><th>BUY STOCK</th></tr>
+		<table class="sectab" border=1>
+			<tr><th>COMPANY CODE</th><th>CURRENT RATE</th>
+			<th colspan=6>STATISTICS</th><th>STATUS</th><th width=100>SAVE</th></tr>
+			<tr> <td> </td><td> </td><td>EPS</td><td>AVERAGE PRICE</td><td>DAY HIGH</td><td>DAY LOW</td><td>FACEVALUE</td><td>TOTAL TRADED VOLUME</td> <td> </td><td> </td></tr>
+			
+			<tr> <td> </td><td> </td> <th colspan=6>BUY STOCK</th>  <td> </td><td> </td> </tr>
+			
+			
+			
+			
 			<tr ng-repeat="sec in prediction.buyStock">
 				<td id="code">{{sec.code}}</td>
-				<td><td>EPS: {{sec.eps}}</td><td>AVERAGE PRICE: {{sec.averagePrice}}</td><td>DAY HIGH: {{sec.dayHigh}}</td><td>DAY LOW: {{sec.dayLow}}</td><td>FACEVALUE: {{sec.faceValue}}</td><td>TOTAL TRADED VOLUME: {{sec.totalTradedVolume}}</td> </td>
 				<td id="price">{{sec.lastPrice}} </td>
+				<td><td>EPS: {{sec.eps}}</td><td>AVERAGE PRICE: {{sec.averagePrice}}</td><td>DAY HIGH: {{sec.dayHigh}}</td><td>DAY LOW: {{sec.dayLow}}</td><td>FACEVALUE: {{sec.faceValue}}</td><td>TOTAL TRADED VOLUME: {{sec.totalTradedVolume}}</td> </td>
+
 				<td id="status">BUY</td>
-				<td><button ng-click="savedata()">SAVE</button></td>
+				<td><button class="savebtn" ng-click="gs.savedata({{sec.code}},{{sec.averagePrice}},'BUY')">SAVE</button></td>
 			</tr>
-			<tr><th>SELL STOCK</th></tr>
+			
+			<tr> <td> </td><td> </td> <th colspan=6>SELL STOCK</th>  <td> </td><td> </td>
+			
+			
 			<tr ng-repeat="sec in prediction.sellStock">
 				<td id="code">{{sec.code}}</td>
 				<td>EPS: {{sec.eps}}<br>AVERAGE PRICE: {{sec.averagePrice}}<br>DAY HIGH: {{sec.dayHigh}}<br>DAY LOW: {{sec.dayLow}}<br>FACEVALUE: {{sec.faceValue}}<br>TOTAL TRADED VOLUME: {{sec.totalTradedVolume}}<br> </td>
 				<td id="price">{{sec.lastPrice}} </td>
 				<td id="status">SELL</td>
-				<td><button ng-click="savedata()">SAVE</button></td>
+				<td><button  ng-click="gs.savedata({{sec.code}},{{sec.averagePrice}},'SELL')">SAVE</button></td>
 			</tr>
 		</table>
 
+
+		
 
 	<div id="mypage" class="mypagetable">
 		<img class="bckimg" href="images/download.jpg">
 		<br></br>
 		<table border=1>
-			<tr><th>COMPANY NAME</th><th>CURRENT RATE</th><th>STATUS</th></tr>
+			<tr><th>COMPANY NAME</th><th>CURRENT RATE</th><th>STATUS</th> <th>LAST UPDATE DATE</th><th>SELL DATE</th><th>BUY DATE</th> </tr>
 			<tr><td>COMPANY</td><td>RATE</td><td>STATUS</td></tr>
-			<tr ng-repeat="cont in mypage"><td>{{cont.company}}</td><td>{{cont.rate}}</td><td>{{cont.status}}</td></tr>
+			<tr ng-repeat="cont in mypage"> <td>{{cont.securityCode}}</td><td>{{cont.curr_price}}</td> <td>{{cont.status}}</td> <td>{{cont.last_update_date}}</td> <td> {{cont.sell_date}}</td> <td>{{cont.buy_date}}</td></tr>
 		</table>
 	</div>
 		</section>
