@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import com.cummins.Stocks.*;
 
 public class Change {
+	
+	double average=0.0;
 
 	
 	
@@ -20,7 +22,7 @@ public class Change {
 						/ stocks.get(i).getOpens().get(j);
 				//
 			}
-			double average = change1 / stocks.get(i).getOpens().size();
+		 average = change1 / stocks.get(i).getOpens().size();
 			if (average >= 0) {
 
 				prediction.getBuyStock().add(stocks.get(i));
@@ -29,6 +31,10 @@ public class Change {
 
 		}
 
+	}
+
+public double getAverage() {
+		return average;
 	}
 
 }

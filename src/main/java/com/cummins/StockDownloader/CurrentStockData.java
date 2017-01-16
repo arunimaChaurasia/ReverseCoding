@@ -25,7 +25,7 @@ public class CurrentStockData {
 	* @return 	a stock object containing info about the company's stock
 	* @see Stock
 	*/
-	static void getStock(Stock s1,String symbol) {  
+	 void getStock(Stock s1,String symbol) {  
 		
 		
 		String eps;

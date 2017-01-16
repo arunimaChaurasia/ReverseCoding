@@ -24,7 +24,7 @@ public class HistoricalStock {
 	
 	
 	
-	public HistoricalStock(Stock s,String symbol,GregorianCalendar start,GregorianCalendar end){
+	public void historicalStock(Stock s,String symbol,GregorianCalendar start,GregorianCalendar end){
 		
 		dates=new ArrayList<GregorianCalendar>();
 		opens=new ArrayList<Double>();

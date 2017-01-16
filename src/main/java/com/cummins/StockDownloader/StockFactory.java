@@ -32,10 +32,10 @@ public class StockFactory {
 
     for(int i=0;i<stocks.size();i++)
     {
-	HistoricalStock stockdownloader=new HistoricalStock(stocks.get(i),stocks.get(i).getCode(),start,end);
-	
-	
-	CurrentStockData.getStock(stocks.get(i),stocks.get(i).getCode());
+	HistoricalStock stockdownloader=new HistoricalStock();
+	stockdownloader.historicalStock(stocks.get(i),stocks.get(i).getCode(),start,end);
+	CurrentStockData currentstockdata=new CurrentStockData();
+	currentstockdata.getStock(stocks.get(i),stocks.get(i).getCode());
     }
 //	System.out.println(stock.getAveragePrice());
 //	System.out.println(stock.getOpens());
