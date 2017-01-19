@@ -155,54 +155,54 @@ public class GetterSetterTest{
 	@Test
     public void testSetVarMargin() {
         Stock stock = new Stock();
-        stock.setVarMargin("");
-        assertTrue(stock.getVarMargin() == "");
+        stock.setVarMargin("7.50");
+        assertTrue(stock.getVarMargin() == "7.50");
     }
 	
 	@Test
     public void testSetLastPrice() {
         Stock stock = new Stock();
-        stock.setLastPrice("");
-        assertTrue(stock.getLastPrice() == "");
+        stock.setLastPrice("1,032.45 ");
+        assertTrue(stock.getLastPrice() == "1,032.45 ");
     }
 	
 	@Test
     public void testSetClosePrice() {
         Stock stock = new Stock();
-        stock.setClosePrice("");
-        assertTrue(stock.getClosePrice() == "");
+        stock.setClosePrice("1,033.70");
+        assertTrue(stock.getClosePrice() == "1,033.70");
     }
 	
 	@Test
     public void testSetSecurityVar() {
         Stock stock = new Stock();
-        stock.setSecurityVar("");;
-        assertTrue(stock.getSecurityVar() == "");
+        stock.setSecurityVar("4.37");;
+        assertTrue(stock.getSecurityVar() == "4.37");
     }
 	
 	@Test
     public void testSetdayHigh() {
         Stock stock = new Stock();
-        stock.setDayHigh("");
-        assertTrue(stock.getDayHigh() == "");
+        stock.setDayHigh("1,045.30");
+        assertTrue(stock.getDayHigh() == "1,045.30");
     }
 	@Test
     public void testSetdayLow() {
         Stock stock = new Stock();
-        stock.setDayLow("");
-        assertTrue(stock.getDayLow() == "");
+        stock.setDayLow("1,031.00");
+        assertTrue(stock.getDayLow() == "1,031.00");
     }
 	@Test
     public void testSetTotTradedVol() {
         Stock stock = new Stock();
-        stock.setTotalTradedVolume("");
-        assertTrue(stock.getTotalTradedVolume() == "");
+        stock.setTotalTradedVolume("34,93,728");
+        assertTrue(stock.getTotalTradedVolume() == "34,93,728");
     }
 	@Test
     public void testSetDeltoTradedQuan() {
         Stock stock = new Stock();
-        stock.setDeliveryToTradedQuaantity("");;
-        assertTrue(stock.getDeliveryToTradedQuaantity() == "");
+        stock.setDeliveryToTradedQuaantity("24,67,726");;
+        assertTrue(stock.getDeliveryToTradedQuaantity() == "24,67,726");
     }
 	
 	
