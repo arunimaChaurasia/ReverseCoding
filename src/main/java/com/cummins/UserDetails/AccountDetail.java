@@ -1,6 +1,7 @@
 package com.cummins.UserDetails;
 
 import java.io.Serializable;
+
 import java.sql.Date;
 import java.util.Calendar;
 

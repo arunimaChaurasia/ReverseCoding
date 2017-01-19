@@ -10,13 +10,11 @@ import com.cummins.Stocks.*;
 
 public class StockFactory {
 	
-	public void stockFactory(   ArrayList<Stock> stocks){
+	public void stockFactory(ArrayList<Stock> stocks){
 	//Scanner in=new Scanner(System.in);
 	GregorianCalendar today = new GregorianCalendar();
 	int todayMonth = today.get(Calendar.MONTH);
-
     int todayDayOfMonth = today.get(Calendar.DAY_OF_MONTH);
-
     int todayYear = today.get(Calendar.YEAR);
     
     Calendar calendar = Calendar.getInstance(); // this would default to now
