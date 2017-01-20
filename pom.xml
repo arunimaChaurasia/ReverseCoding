@@ -136,7 +136,8 @@
 
 	</dependencies>
 
-	<build>		
+	<build>
+		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -204,7 +205,8 @@
 				<version>3.2</version>
 			<executions>
         <execution><configuration>
-
+         <sonar.sources>src/main/java</sonar.sources>
+                <sonar.test.exclusions>com.cummins.testPackage.*.java</sonar.test.exclusions>
               
             </configuration></execution>
     </executions>
