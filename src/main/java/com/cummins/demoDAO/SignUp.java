@@ -38,6 +38,8 @@ public class SignUp implements Serializable {
 			statement.setString(5,signup.getEmail_id());
 			statement.setString(6,signup.getPassword());
 			statement.executeQuery();
+			rst.close();
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

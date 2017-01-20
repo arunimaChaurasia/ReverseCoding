@@ -30,6 +30,8 @@ public class AccountDetaillDB {
 				savedetail.get(i).setSell_date(rst.getDate("sell_date"));
 				
 			}
+			rst.close();
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

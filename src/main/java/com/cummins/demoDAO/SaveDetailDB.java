@@ -38,6 +38,8 @@ public class SaveDetailDB {
 			statement.setDate(7,acc_detail.getSell_date());
 			statement.setDate(8,acc_detail.getBuy_date());
 			statement.executeQuery();
+			rst.close();
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

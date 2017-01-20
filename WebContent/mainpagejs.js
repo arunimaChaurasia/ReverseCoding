@@ -1,4 +1,4 @@
-	var app = angular.module('Sectors', []);
+var app = angular.module('Sectors', []);
 	
 	app.controller('getSector', function($scope, $http) {	
 			
@@ -8,10 +8,11 @@
 			
 			window.onload=function()
 			{
-			     document.getElementById('home').style.display='block';
+			    document.getElementById('home').style.display='block';
 				document.getElementById('signup').style.display='none';
 				document.getElementById('mypage').style.display='none';
-				document.getElementById('sector').style.display='block';
+				document.getElementById('sector').style.display='none';
+				
 				$http.get('http://localhost:8080/RestDemoService/sectorDisplay')
 					.then(function(response) {
         $scope.content = response.data;
@@ -22,11 +23,11 @@
 											});
 					
 			};
-			this.savedata=function(Company,Price,Status)
+			this.savedata=function(Company,Price)
 			{
 				
 				console.log(Company);
-
+				var Status=document.getElementById("status").value;
 	  var serviceName='http://localhost:8080/RestDemoService/Savenew';
 	 	var varname = {securityCode:Company,'status':Status,curr_price:Price,date:Date()};
     var jsonv = JSON.stringify(varname);
@@ -73,7 +74,8 @@
 				   document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='none';
 					document.getElementById('mypage').style.display='block';
-					mypage();
+					
+					
 				}
                 else if (this.tab === 3)
 				{
@@ -88,6 +90,7 @@
 				document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='none';
 				    document.getElementById('mypage').style.display='none';
+				    
 					
 				}
                 else if (this.tab === 5)
@@ -99,10 +102,7 @@
 					
 				document.getElementById('sector').style.display='block';
 			
-				}
-                    
-               
-                
+				} 
             };
 	
 
@@ -131,11 +131,30 @@
 	this.login=function()
 	{ var Uname=document.getElementById("uname").value;
 	  var Upswd=document.getElementById("psw").value;
-	  this.submit(Uname,Upswd,'http://localhost:8080/RestDemoService/Login');
+	  
+	  	var varname = {name:Uname,password:Upswd};
+    var jsonv = JSON.stringify(varname);
+	console.log(jsonv);
+		$http.post('http://localhost:8080/RestDemoService/Login',jsonv,{'Content':'application/json','Accept':'application/json'})
+		.then(function(response){			//Anonymus function for success callback
+		
+			console.log(response.data);		//Prints success log
+			        $scope.login = response.data;
+			
+			
+		},function(response){				//Anonymus function for error callback
+		
+			console.log("There was an error: " + response.status + " " + response.statusText);
+											//Prints error log
+							});
+	
+	 // this.submit(Uname,Upswd, 'http://localhost:8080/RestDemoService/Login');
 	  
 	  this.flag=1;
+	 mypage();
 	
 	};
+	
 	
 	this.signup=function()
 	{
@@ -146,7 +165,7 @@
 		var phn_no=document.getElementById('phone').value;
 
 	  var serviceName='http://localhost:8080/RestDemoService/SignUp';
-	 	var varname = {first_name:fname,last_name:lname,email_id:eid,Password:passwd,phn_no:phone};
+	 	var varname = {first_name:first_name,last_name:last_name,email_id:email_id,password:Password,phn_no:phn_no};
     var jsonv = JSON.stringify(varname);
 	console.log(jsonv);
 		$http.post(serviceName,jsonv,{'Content':'application/json','Accept':'application/json'})

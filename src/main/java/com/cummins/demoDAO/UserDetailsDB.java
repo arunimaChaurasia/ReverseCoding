@@ -27,6 +27,8 @@ public class UserDetailsDB {
 				user.setLast_name(rst.getString("last_name"));
 				user.setPhn_no(rst.getLong("phone_no"));
 			}
+			rst.close();
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

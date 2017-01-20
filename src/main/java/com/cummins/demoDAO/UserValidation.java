@@ -23,6 +23,8 @@ public class UserValidation {
 			while (rst.next()) {
 				password = rst.getString("password");
 			}
+			rst.close();
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

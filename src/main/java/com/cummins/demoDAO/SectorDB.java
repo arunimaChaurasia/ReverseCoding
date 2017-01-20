@@ -29,6 +29,8 @@ public class SectorDB {
 				sector.setSymbol(rst.getString("sector_code"));
 				sector_table.add(i, sector);
 			}
+			rst.close();
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

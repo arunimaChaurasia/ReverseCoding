@@ -4,6 +4,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <head lang="en">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="HandheldFriendly" content="true">
 	<meta charset="UTF-8">
 	<title>BREAD 'N' BUCKS</title>
 	<link rel="icon" type="image/png" href="C:\Users\aditi\git\BreadNBucks\src\com\cummins\demo\images\favicon.ico">
@@ -11,12 +14,13 @@
 </head>
 
 <body >
+	<div id="container3">
 	<main>
 		<header>
 			<div class="w3-top">
   <ul class="w3-navbar w3-white w3-wide w3-padding-8 w3-card-2">
     <li>
-      <a class="w3-margin-left"><b>BREAD 'N' BUCKS</b></a>
+      <a class="w3-margin-left"><b><font size="4">BREAD 'N' BUCKS</font></b></a>
     </li>
     <!-- Float links to the right. Hide them on small screens -->
   </ul>
@@ -36,7 +40,7 @@
 					<!-- Modal Content -->
 					<form class="modal-content animate" >
 						<div class="imgcontainer">
-							<img src="images\login_img.png" alt="Login Image" class="avatar"></a>
+							<img src="http://www.hit4hit.org/img/login/user-icon-6.png" alt="Login Image" class="avatar">
 						</div>
 
 						<div class="container">
@@ -57,38 +61,50 @@
 						</div>
 					</form>
 				</div>
-
-			
 			</div>
 		
-				
 		
 			   <div id="nav-wrapper">
 				<ul class="tab tab-pane fade in active">              
 					<li><a ng-click="gs.select(1)">HOME</a></li>
 					<li><a ng-click="gs.select(2)">MY PAGE </a><li>
-					<li><a ng-click="gs.select(3)">SIGN IN</a></li>
+					<li><a ng-click="gs.select(3)">SIGN UP</a></li>
 					<li><a ng-click="gs.select(4)">ABOUT</a></li>
-					<div class="dropdown">
+					<!--<div class="dropdown">
 					<li><a> SECTORS &#9662;</a>
 						<ul>
 						  <div class="dropdown-content">
-
 							<li ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol,'http://localhost:8080/RestDemoService/securityDisplay')"><a><t>{{item.name}}</t><br><t>{{item.symbol}}</t></a><br></li>
-					
+							<li> Sector 1</li>
+							<li> Sector 2</li>
 							</ul>
 						</div>
 					</li>
-					</div> 
-			</div>		
+					</div> -->
+			</div>	
+
+				<marquee class="marquee">Welcome to Bread N Bucks!    Use John Doe's Philosophies that reflect the latest academic research Because MONEY doesn't come with INSTRUCTIONS!</marquee>
 				
 				<div id="home">
-			<img class="bckimg" src="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg">
-				</div>
-<div class="form">
-      
+					<img class="bckimg" src="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg" alt="Sectors">
+					
+					<h2 style="color:white;">CREATE WEALTH <br />NOT JUST PROFIT</h2>
 
-      
+					<input type="button" class="dropdown" value="Sectors"
+					/>
+					
+					<div class="dropdown" >											
+						  <div class="dropdown-content"  >
+							<li class="tooltip" ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol,'http://localhost:8080/RestDemoServic/securityDisplay')"><a><t>{{item.name}}</t> &nbsp; &nbsp; &nbsp;&nbsp;<t>{{item.symbol}}</t></a><span> This is a tooltip</span></li>
+<!-- 							<li class="tooltip"> Sector 1<span> This is a tooltip</span></li> -->
+<!-- 							<li> Sector 2</li> -->
+							
+						</div>					
+					</div>	
+					
+				</div>
+				
+<div class="form">  
         <div id="signup" class="Sgn"> 
 		
           <h1>Sign Up for Free</h1>
@@ -158,7 +174,7 @@
 				<td><td>EPS: {{sec.eps}}</td><td>AVERAGE PRICE: {{sec.averagePrice}}</td><td>DAY HIGH: {{sec.dayHigh}}</td><td>DAY LOW: {{sec.dayLow}}</td><td>FACEVALUE: {{sec.faceValue}}</td><td>TOTAL TRADED VOLUME: {{sec.totalTradedVolume}}</td> </td>
 
 				<td id="status">BUY</td>
-				<td><button class="savebtn" ng-click="gs.savedata({{sec.code}},{{sec.averagePrice}},'BUY')">SAVE</button></td>
+				<td><button class="savebtn" ng-click="gs.savedata(sec.code,sec.averagePrice)">SAVE</button></td>
 			</tr>
 			
 			<tr> <td> </td><td> </td> <th colspan=6>SELL STOCK</th>  <td> </td><td> </td>
@@ -169,15 +185,13 @@
 				<td>EPS: {{sec.eps}}<br>AVERAGE PRICE: {{sec.averagePrice}}<br>DAY HIGH: {{sec.dayHigh}}<br>DAY LOW: {{sec.dayLow}}<br>FACEVALUE: {{sec.faceValue}}<br>TOTAL TRADED VOLUME: {{sec.totalTradedVolume}}<br> </td>
 				<td id="price">{{sec.lastPrice}} </td>
 				<td id="status">SELL</td>
-				<td><button  ng-click="gs.savedata({{sec.code}},{{sec.averagePrice}},'SELL')">SAVE</button></td>
+				<td><button  ng-click="gs.savedata(sec.code,sec.averagePrice)">SAVE</button></td>
 			</tr>
 		</table>
-
-
 		
 
 	<div id="mypage" class="mypagetable">
-		<img class="bckimg" href="images/download.jpg">
+<!-- 		<img class="bckimg" href="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg"> -->
 		<br></br>
 		<table border=1>
 			<tr><th>COMPANY NAME</th><th>CURRENT RATE</th><th>STATUS</th> <th>LAST UPDATE DATE</th><th>SELL DATE</th><th>BUY DATE</th> </tr>
@@ -185,6 +199,8 @@
 			<tr ng-repeat="cont in mypage"> <td>{{cont.securityCode}}</td><td>{{cont.curr_price}}</td> <td>{{cont.status}}</td> <td>{{cont.last_update_date}}</td> <td> {{cont.sell_date}}</td> <td>{{cont.buy_date}}</td></tr>
 		</table>
 	</div>
+	
+	
 		</section>
 		
 	</main>
@@ -199,6 +215,6 @@
 	</script>
 	
 	<script src="mainpagejs.js"></script>
-	
+	</div>
 </body>
 </html>

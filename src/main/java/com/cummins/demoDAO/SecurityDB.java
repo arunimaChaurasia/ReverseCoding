@@ -33,6 +33,8 @@ public class SecurityDB {
 				i++;
 				System.out.println(rst.getString("security_code"));
 			}
+			rst.close();
+			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
