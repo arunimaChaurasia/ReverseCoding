@@ -51,10 +51,10 @@ public class CurrentStockData {
 			String[] stockInfo;
 			String[] tempStockInfo1;
 			stockInfo = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-			
+			//int line1=Integer.parseInt(stockInfo[0]);
 			int i=0;
 			String[] stockInfo1 = new String[stockInfo.length];
-			                               
+		
 			while(i<stockInfo.length)
 			{
 				//System.out.println(stockInfo[i]);

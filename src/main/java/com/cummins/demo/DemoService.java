@@ -112,7 +112,8 @@ public class DemoService {
 				e.printStackTrace();
 			}
 			
-			return null;
+			return null
+					;
 		}
 
 	}
@@ -154,11 +155,21 @@ public class DemoService {
 	}
 	
 	@RequestMapping(value = "/Savenew", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public @ResponseBody String SaveDetails(@RequestBody AccountDetail savedetails) {
+	public @ResponseBody String SaveDetails(@RequestBody UserFactory savedetails) {
 		//System.out.println(signup.getUserName());
 	SaveDetailDB save=new	SaveDetailDB();
-	save.getSaveDetailDB(conn,savedetails);
-		return "Details are saved";
+	save.getSaveDetailDB(conn, savedetails.getSavedetail().get(0),savedetails.getLogin());
+	String details=new String();
+	ObjectMapper mapper = new ObjectMapper();
+	try {
+		details = mapper.writeValueAsString("Details are saved!");
+	} catch (JsonProcessingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	return details;
+		
 
 	}
 
