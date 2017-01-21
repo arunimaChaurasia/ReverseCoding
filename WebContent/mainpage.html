@@ -31,7 +31,7 @@
 		
 			<div class="menu">
 				<!-- Button to open the modal login form -->
-				<button onclick="document.getElementById('id01').style.display='block'" style="margin-left:70%;">Login</button>
+				<button onclick="document.getElementById('id01').style.display='block'" style="margin-left:70%;">Log {{value}}</button>
 
 				<!-- The Modal -->
 				<div id="id01" class="modal">
@@ -50,7 +50,7 @@
 							<label><b></b></label>
 								<input type="password" placeholder="Enter Password" id="psw" required><br>
 
-							<button type="submit" ng-click="gs.login()">Login</button><br>
+							<button type="submit" ng-click="gs.login()"> Login</button><br>
 		
 						</div>
 
@@ -95,7 +95,7 @@
 					
 					<div class="dropdown" >											
 						  <div class="dropdown-content"  >
-							<li class="tooltip" ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol,'http://localhost:8080/RestDemoServic/securityDisplay')"><a><t>{{item.name}}</t> &nbsp; &nbsp; &nbsp;&nbsp;<t>{{item.symbol}}</t></a><span> This is a tooltip</span></li>
+							<li class="tooltip" ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol,'http://localhost:8080/RestDemoService/securityDisplay')"><a><t>{{item.name}}</t> --- <t>{{item.symbol}}</t></a><span> This is a tooltip</span></li>
 <!-- 							<li class="tooltip"> Sector 1<span> This is a tooltip</span></li> -->
 <!-- 							<li> Sector 2</li> -->
 							
@@ -143,7 +143,7 @@
             <input type="password"required autocomplete="off" id="passwd"/>
           </div>
           
-          <button type="submit" class="button button-block">Get Started</button>
+          <button type="submit" class="button button-block" ng-click=gs.signup()>Get Started</button>
 		</div>
 		
           
@@ -193,6 +193,7 @@
 	<div id="mypage" class="mypagetable">
 <!-- 		<img class="bckimg" href="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg"> -->
 		<br></br>
+		
 		<table border=1>
 			<tr><th>COMPANY NAME</th><th>CURRENT RATE</th><th>STATUS</th> <th>LAST UPDATE DATE</th><th>SELL DATE</th><th>BUY DATE</th> </tr>
 			<tr><td>COMPANY</td><td>RATE</td><td>STATUS</td></tr>

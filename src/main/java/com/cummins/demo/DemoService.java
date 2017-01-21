@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.cummins.PredictionModel.Prediction;
 import com.cummins.StockDownloader.StockFactory;
@@ -23,10 +24,11 @@ import com.cummins.demoDAO.SecurityDB;
 import com.cummins.demoDAO.SignUp;
 import com.cummins.demoDAO.UserDetailsDB;
 import com.cummins.demoDAO.UserValidation;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
-// @EnableWebMvc
+//@EnableWebMvc
 
 public class DemoService {
 
@@ -51,6 +53,7 @@ public class DemoService {
 		return jsonInString;
 	}
 
+	
 	@RequestMapping(value = "/securityDisplay", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
 	public @ResponseBody String getSecurity(@RequestBody Security security) {
 
@@ -81,13 +84,15 @@ public class DemoService {
 		int status;
 		UserValidation user = new UserValidation();
 		status = user.getUser(conn, login);
+		String invalid = new String();
+		ObjectMapper mapper = new ObjectMapper();
+
 
 		if (status == 1) {
 			// ArrayList<SavedDetails> savedetail = new
 			// ArrayList<SavedDetails>();
 			UserFactory userfactory = new UserFactory(conn, login);
-			ObjectMapper mapper = new ObjectMapper();
-
+			
 			// Object to JSON in String
 			String jsonInString = new String();
 			try {
@@ -100,7 +105,14 @@ public class DemoService {
 			System.out.println("service return  called");
 			return jsonInString;
 		} else {
-			return "Invalid UserName or Password";
+			try {
+				invalid = mapper.writeValueAsString("invalid username or password");
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return null;
 		}
 
 	}
@@ -111,12 +123,32 @@ public class DemoService {
 		int status;
 		UserValidation user = new UserValidation();
 		status = user.getUser(conn, signup);
+		String invalid = new String();
+		ObjectMapper mapper = new ObjectMapper();
+
 
 		if (status == 1) {
-			return "User Already exists Cannot signup!!";
+			
+			try {
+				invalid = mapper.writeValueAsString("User Already exists Cannot signup!!");
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return invalid;
+			
 		} else {
 			SignUp signIn=new SignUp(conn,signup);
-			return "SignUp Successfull !!! Congratulations";
+			try {
+				invalid = mapper.writeValueAsString("1");
+			} catch (JsonProcessingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return invalid;
+			
 		}
 
 	}

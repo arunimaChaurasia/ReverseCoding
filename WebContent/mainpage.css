@@ -19,7 +19,7 @@ ul.tab {
 	height:10%;
     padding: 1.1%;
     overflow: hidden;
-    border: 1px solid #ccc;
+    border: 2% solid #ccc;
     background-color: #339bce;
     cursor :pointer;
 }
@@ -34,16 +34,17 @@ ul.tab li {
 ul.tab li a {
     display: inline-block;
     color: black;
-
     text-align: center;
     padding: 2% 1%;
     text-decoration: none;
-    transition: 0.3s;
+    transition: 0.1s;
     font-size: 100%;
 }
 
 /* Change background color of links on hover */
-ul.tab li a:hover {background-color: #ddd;}
+ul.tab li a:hover {
+	background-color: #ddd;
+}
 
 /* Create an active/current tablink class */
 ul.tab li a:focs, .active {background-color: #ccc;}
@@ -69,6 +70,7 @@ ul.tab li a:focs, .active {background-color: #ccc;}
 	/*opacity : .8;*/
 	/*background-color: #A0522D;*/
 	cursor : pointer;
+	/* z-index : 2; */
 	
 }
 
@@ -86,20 +88,29 @@ h2 {
     background-color: white;
     min-width: 21.87%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,5);
-    padding: 1.56% 0.78%;
-    z-index: 5;
-    width:50.71%;  
-    font-size : 100%;
+    padding: 1.56% 2%;
+    z-index:3 ;
+    width:90%;  
+    /* font-size : 100%; */
      
 }
 
 .dropdown:hover .dropdown-content {
      display: block;
-	 position: absolute;
+	 position: absolute; 
 	 background-color: #f9f9;
-	 top : 3.90%;
+	 top : 90%;
+	 width : 90%;
 }
 
+
+.dropdown-content a {
+    color: black;
+    padding: .5% 1%;
+    text-decoration: none;
+    display: block;
+    font-size:90%;
+}
 
 .dropdown:hover .dropdown-content a:hover {
 	background-color:#A9A9A9 ;
@@ -132,7 +143,7 @@ h2 {
 	margin-top:00px;
     border: 0.39% solid #888;
     width: 50%;		/* Could be more or less, depending on screen size */
-	height: 45%;
+	height: 60%;
 }
 
 /* The Close Button */
@@ -169,7 +180,7 @@ h2 {
     to {transform: scale(1)}
 }
 form {
-    border: 3px solid #f1f1f1;
+    /* border: 3px solid #f1f1f1; */
 }
 
 input[type=text], input[type=password]  ,input[type=email] ,input[type=phone]{
@@ -380,12 +391,12 @@ input, textarea {
 .bckimg
 {
 	width:100%;
-	height:10%;
+	height:90%;
 	visibility:block;
 	padding-top: 00px;
     padding-bottom: 50px;
     display:inline-block;
-    position: relative; 
+    position: absolute; 
 
 }
 h2 { 
@@ -452,14 +463,14 @@ tr:nth-child(even){
 
 .tooltip{
 	position:relative;
-	z-index:20;
+	z-index:4;
 }
 
 .tooltip span{
 	display : none;
 }
 .tooltip:hover{
-	z-index:21;
+	z-index:5;
 }
 .tooltip:hover span {
 	display:block;
@@ -470,13 +481,13 @@ tr:nth-child(even){
 	font-size:11px;
 	position:absolute;
 	border-radius:6px;
-	left:20px;
+	left:80%;
 }
 
 
 footer{
-    position:relative;
-    height:10%;
+    position:absolute;
+    height:5%;
     bottom:0px;
     left:0px;
     right:0px;
@@ -488,19 +499,28 @@ footer{
 }
 
 /* Tabled Portrait */
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 480px) {
+@media screen and (max-device-width : 720px) {
     .tab { 
     margin-top:50%;
     width:100%;
     text-decoration: none;
     transition: 0.3s;
     font-size:1rem; }
+    .cancelbtn{width:20%;}
+    .dropdown{width:26%;
+    background-size:180%;
+    background-position:50% 40%;}
     
-    .h2{font-size:50px;}
+    h2{font-size:150%;
+    left : 40%;
+    text-shadow : 2px 1px black;
+    }
    
    html {font-size:100%;}
+   
+   ul.tab{margin-top:15%;}
+   button{padding:7px 10px;}
+   ul.tab li a{font-sixe:10%;}
     
   .modal { width:100%; margin:0; border:none; }
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Userdetail implements Serializable{
 	String first_name;
 	String last_name;
-	long phn_no;
+	String phn_no;
 	String email_id,password;
 
 	public String getEmail_id() {
@@ -26,7 +26,7 @@ public class Userdetail implements Serializable{
 
 	
 
-	public void setPhn_no(long phn_no) {
+	public void setPhn_no(String phn_no) {
 		this.phn_no = phn_no;
 	}
 
@@ -47,7 +47,7 @@ public class Userdetail implements Serializable{
 	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
-	public long getPhn_no() {
+	public String getPhn_no() {
 		return phn_no;
 	}
 

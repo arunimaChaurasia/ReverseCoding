@@ -11,11 +11,11 @@ import com.cummins.UserDetails.Userdetail;
 public class UserValidation {
 	public int getUser(DataBaseConn connection, Userdetail login) {
 		String password = new String();
-		PreparedStatement statement = null;
+		
 
 		String query = "select password from user_details where email_id=?";
 		try {
-			statement = connection.getConnection().prepareStatement(query);
+			PreparedStatement statement = connection.getConnection().prepareStatement(query);
 			statement.setString(1, login.getEmail_id());
 
 			ResultSet rst = statement.executeQuery();

@@ -14,13 +14,13 @@ public class SecurityDB {
 	ArrayList<Stock> security=new ArrayList<Stock>();   
 	public SecurityDB(DataBaseConn connection ,String symbol)
 	{
-		PreparedStatement statement=null;
+		 
 		
 		int i=0;
 		
 		String query="select security_code from security_table where security_id IN (select security_id from sector_security_map where sector_id=(select sector_id from sector_table where sector_code=?))";
 		try {
-			statement=connection.getConnection().prepareStatement(query);
+			PreparedStatement statement=connection.getConnection().prepareStatement(query);
 			statement.setString(1, symbol);
 			
 			ResultSet rst= statement.executeQuery();

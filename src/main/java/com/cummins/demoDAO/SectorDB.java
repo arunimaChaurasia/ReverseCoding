@@ -11,13 +11,12 @@ public class SectorDB {
 	ArrayList<Sector> sectors    = new ArrayList<Sector>();
 	public ArrayList<Sector> getSectors(DataBaseConn connection)
 	{
-		Statement statement=null;
-	
+		 
 		int i=0;
 		ArrayList<Sector> sector_table=new ArrayList<Sector>();
 		String query="select sector_name,sector_code from sector_table";
 		try {
-			statement=connection.getConnection().createStatement();
+			Statement statement=connection.getConnection().createStatement();
 			
 			ResultSet rst= statement.executeQuery(query);
 			

@@ -130,14 +130,14 @@
 		<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-test</artifactId>
-		<version>${spring.version}</version>
-		<scope>tests</scope>
+		<version>3.2.3.RELEASE</version>
+		<scope>test</scope>
 		</dependency>
 
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -150,6 +150,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>1.4.3.RELEASE</version>
 			</plugin>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>

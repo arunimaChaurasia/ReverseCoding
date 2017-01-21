@@ -69,8 +69,8 @@ public class GetterSetterTest{
 	@Test
 	public void testSetPhn_no(){
 		Userdetail userdetail=new Userdetail();
-		userdetail.setPhn_no(987654321);
-		 assertTrue(userdetail.getPhn_no() == 987654321);
+		userdetail.setPhn_no("987654321");
+		 assertTrue(userdetail.getPhn_no() == "987654321");
 		}
 	@Test
 	public void testSetLastName(){

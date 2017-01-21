@@ -15,14 +15,13 @@ public class SignUp implements Serializable {
 	{
 		
 		//String password = new String();
-		PreparedStatement statement = null;
-		Statement result_stmt=null;
+		
 		int i=0;
 		String query_id="select max(user_id) as user_id1 from user_details";
-		String query = "insert into user_details values (first_name,last_name,phn_no,email_id,password)(?,?,?,?,?,?)";
+		String query = "insert into user_details  (user_id,first_name,last_name,phone_no,email_id,password) values (?,?,?,?,?,?)";
 		
 		try {
-			result_stmt=connection.getConnection().createStatement();
+			Statement result_stmt=connection.getConnection().createStatement();
 			ResultSet rst=result_stmt.executeQuery(query_id);
 			while (rst.next()) {
 				user_id=rst.getInt("user_id1");
@@ -30,11 +29,11 @@ public class SignUp implements Serializable {
 			}
 			user_id++;
 			System.out.println(user_id);
-			statement = connection.getConnection().prepareStatement(query);
+			PreparedStatement  statement = connection.getConnection().prepareStatement(query);
 			statement.setInt(1,user_id);
 			statement.setString(2, signup.getFirst_name());
 			statement.setString(3,signup.getLast_name());
-			statement.setLong(4,signup.getPhn_no());
+			statement.setString(4,signup.getPhn_no());
 			statement.setString(5,signup.getEmail_id());
 			statement.setString(6,signup.getPassword());
 			statement.executeQuery();

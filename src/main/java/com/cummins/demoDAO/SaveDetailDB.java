@@ -13,13 +13,13 @@ public class SaveDetailDB {
 	public void getSaveDetailDB(DataBaseConn connection,AccountDetail acc_detail)
 	{
 		String query_id="select max(entry_id)  from account_details";
-		PreparedStatement statement = null;
+	
 		int i=0;
-		Statement result_stmt=null;
+		 
 		String query = "insert into account_details values (?,?,?,?,?,?,?,?)";
 		
 		try {
-			result_stmt=connection.getConnection().createStatement();
+			Statement	result_stmt=connection.getConnection().createStatement();
 			ResultSet rst=result_stmt.executeQuery(query_id);
 			while (rst.next()) {
 				entry_id=rst.getInt("max(entry_id)");
@@ -28,7 +28,7 @@ public class SaveDetailDB {
 //			entry_id=5;
 			entry_id ++;
 			System.out.println(entry_id);
-			statement = connection.getConnection().prepareStatement(query);
+			PreparedStatement  statement = connection.getConnection().prepareStatement(query);
 			statement.setInt(1,entry_id);
 			statement.setString(2, acc_detail.getSecurityCode());
 			statement.setString(3,acc_detail.getStatus());

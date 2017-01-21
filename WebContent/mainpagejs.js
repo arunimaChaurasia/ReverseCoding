@@ -5,13 +5,14 @@ var app = angular.module('Sectors', []);
 			var tab,flag;
 			this.tab=1;
 			this.flag=0;
-			
+			var value;
 			window.onload=function()
 			{
 			    document.getElementById('home').style.display='block';
 				document.getElementById('signup').style.display='none';
 				document.getElementById('mypage').style.display='none';
 				document.getElementById('sector').style.display='none';
+				$scope.value="IN";
 				
 				$http.get('http://localhost:8080/RestDemoService/sectorDisplay')
 					.then(function(response) {
@@ -129,29 +130,48 @@ var app = angular.module('Sectors', []);
 		
 		
 	this.login=function()
-	{ var Uname=document.getElementById("uname").value;
-	  var Upswd=document.getElementById("psw").value;
-	  
-	  	var varname = {name:Uname,password:Upswd};
-    var jsonv = JSON.stringify(varname);
-	console.log(jsonv);
-		$http.post('http://localhost:8080/RestDemoService/Login',jsonv,{'Content':'application/json','Accept':'application/json'})
-		.then(function(response){			//Anonymus function for success callback
-		
-			console.log(response.data);		//Prints success log
-			        $scope.login = response.data;
+	{ 
+		if ($scope.value=="IN")
+			{
+			var Uname=document.getElementById("uname").value;
+			  var Upswd=document.getElementById("psw").value;
+			  
+			  	var varname = {email_id:Uname,password:Upswd};
+		    var jsonv = JSON.stringify(varname);
+			console.log(jsonv);
+				$http.post('http://localhost:8080/RestDemoService/Login',jsonv,{'Content':'application/json','Accept':'application/json'})
+				.then(function(response){			//Anonymus function for success callback
+				
+					console.log(response.data);		//Prints success log
+					        $scope.login = response.data;
+					        if ($scope.login=="") {
+					            alert("NOT VALID USERNAME OR PASSWORD");
+					        }
+					        else
+					        	{
+					        	$scope.value="OUT";
+					        	}
+					
+					
+				},function(response){				//Anonymus function for error callback
+				
+					console.log("There was an error: " + response.status + " " + response.statusText);
+													//Prints error log
+									});
 			
-			
-		},function(response){				//Anonymus function for error callback
+			}
+		else
+			{
+			 document.getElementById('mypage').style.display='none';	
+			 alert(" YOU ARE LOGGED OUT !");
+			 
+			}
 		
-			console.log("There was an error: " + response.status + " " + response.statusText);
-											//Prints error log
-							});
-	
+		
 	 // this.submit(Uname,Upswd, 'http://localhost:8080/RestDemoService/Login');
 	  
 	  this.flag=1;
-	 mypage();
+//	 mypage();
 	
 	};
 	
@@ -172,7 +192,7 @@ var app = angular.module('Sectors', []);
 		.then(function(response){			//Anonymus function for success callback
 		
 			console.log(response.data);		//Prints success log
-			        $scope.content = response.data;
+			        $scope.content_new = response.data;
 			
 			
 		},function(response){				//Anonymus function for error callback
