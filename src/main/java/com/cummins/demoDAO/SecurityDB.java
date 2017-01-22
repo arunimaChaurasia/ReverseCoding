@@ -15,7 +15,6 @@ public class SecurityDB {
 	public SecurityDB(DataBaseConn connection ,String symbol)
 	{
 		 
-		
 		int i=0;
 		
 		String query="select security_code from security_table where security_id IN (select security_id from sector_security_map where sector_id=(select sector_id from sector_table where sector_code=?))";

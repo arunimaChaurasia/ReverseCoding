@@ -12,7 +12,7 @@ public class UserDetailsDB {
 	public void getUserDetails(DataBaseConn connection, Userdetail user) {
 		//String password = new String();
 		 
-		int i = 0;
+		
 
 		String query = "select * from user_details where email_id=?";
 		try {

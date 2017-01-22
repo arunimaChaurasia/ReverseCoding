@@ -26,7 +26,6 @@ public class AccountDetaillDB {
 				savedetail=null;
 				rst.close();
 				valid_state.close();
-	
 			}
 			else{
 				PreparedStatement statement = connection.getConnection().prepareStatement(query);

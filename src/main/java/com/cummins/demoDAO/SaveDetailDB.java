@@ -29,7 +29,7 @@ public class SaveDetailDB {
 			ResultSet rst=result_stmt.executeQuery(query_id);
 			while (rst.next()) {
 				entry_id=rst.getInt("max(entry_id)");
-				
+	
 			}
 //			entry_id=5;
 			entry_id ++;

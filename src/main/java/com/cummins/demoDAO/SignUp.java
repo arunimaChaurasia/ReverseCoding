@@ -14,9 +14,7 @@ public class SignUp implements Serializable {
 	public SignUp(DataBaseConn connection,Userdetail signup)
 	{
 		
-		//String password = new String();
 		
-		int i=0;
 		String query_id="select max(user_id) as user_id1 from user_details";
 		String query = "insert into user_details  (user_id,first_name,last_name,phone_no,email_id,password) values (?,?,?,?,?,?)";
 		
