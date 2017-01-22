@@ -9,7 +9,11 @@ import com.cummins.demoDAO.UserDetailsDB;
 
 public class UserFactory {
 	Userdetail login;
-	ArrayList<AccountDetail> savedetail;
+	ArrayList<AccountDetail> savedetail=new ArrayList<AccountDetail>();
+	public UserFactory()
+	{
+		
+	}
 	public UserFactory(DataBaseConn conn,	Userdetail log) {
 		login=log;
 		UserDetailsDB userDetail=new UserDetailsDB();

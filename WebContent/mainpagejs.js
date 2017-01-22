@@ -6,13 +6,18 @@ var app = angular.module('Sectors', []);
 			this.tab=1;
 			this.flag=0;
 			var value;
+			var cont;
+			$scope.value="IN";
+			var email="";
 			window.onload=function()
 			{
 			    document.getElementById('home').style.display='block';
+				document.getElementById('wid').style.display='block';
 				document.getElementById('signup').style.display='none';
 				document.getElementById('mypage').style.display='none';
 				document.getElementById('sector').style.display='none';
-				$scope.value="IN";
+				document.getElementById('aboutpage').style.display='none';
+			
 				
 				$http.get('http://localhost:8080/RestDemoService/sectorDisplay')
 					.then(function(response) {
@@ -24,27 +29,38 @@ var app = angular.module('Sectors', []);
 											});
 					
 			};
-			this.savedata=function(Company,Price)
+			this.savedata=function(Company,Price,status)
 			{
 				
 				console.log(Company);
-				var Status=document.getElementById("status").value;
-	  var serviceName='http://localhost:8080/RestDemoService/Savenew';
-	 	var varname = {securityCode:Company,'status':Status,curr_price:Price,date:Date()};
-    var jsonv = JSON.stringify(varname);
-	console.log(jsonv);
-		
-					$http.post(serviceName,jsonv,{'Content':'application/json','Accept':'application/json'})
-					.then(function(response){			//Anonymus function for success callback
-		
-						console.log(response.data);		//Prints success log
-			
-			
-					},function(response){				//Anonymus function for error callback
-		
-			console.log("There was an error: " + response.status + " " + response.statusText);
-											//Prints error log
-							});
+				if ($scope.value=="OUT")
+					{
+					var Status=document.getElementById("status").textContent;
+					var volume=document.getElementById("quant").textContent;
+					  var serviceName='http://localhost:8080/RestDemoService/Savenew';
+					 	var varname = {login:{email_id:$scope.email},savedetail:[{securityCode:Company,curr_price:Price,status:Status,volume:volume}]};
+				    var jsonv = JSON.stringify(varname);
+					console.log(jsonv);
+						
+									$http.post(serviceName,jsonv,{'Content':'application/json','Accept':'application/json'})
+									.then(function(response){			//Anonymus function for success callback
+						
+										console.log(response.data);
+										alert("DATA IS SAVED!");//Prints success log
+							
+							
+									},function(response){				//Anonymus function for error callback
+						
+							console.log("There was an error: " + response.status + " " + response.statusText);
+															//Prints error log
+											});
+							
+					}
+				else
+					{
+					alert("YOU ARE NOT LOGGED IN!");
+					
+					}
 			
 				
 				
@@ -65,32 +81,39 @@ var app = angular.module('Sectors', []);
 				if (this.tab === 1)
 				{
 					document.getElementById('home').style.display='block';
+				document.getElementById('wid').style.display='block';
 				document.getElementById('sector').style.display='none';
 				 document.getElementById('signup').style.display='none';
 				document.getElementById('mypage').style.display='none';
+				document.getElementById('aboutpage').style.display='none';
 				}
 				else if (this.tab === 2)
 				{
 					document.getElementById('home').style.display='none';
+					document.getElementById('wid').style.display='none';
 				   document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='none';
 					document.getElementById('mypage').style.display='block';
-					
+					document.getElementById('aboutpage').style.display='none';
 					
 				}
                 else if (this.tab === 3)
 				{
 					document.getElementById('home').style.display='none';
+					document.getElementById('wid').style.display='none';
 					document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='block';
 				    document.getElementById('mypage').style.display='none';	
+					document.getElementById('aboutpage').style.display='none';
 				}
                 else if (this.tab === 4)
 				{
 				document.getElementById('home').style.display='none';
+				document.getElementById('wid').style.display='none';
 				document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='none';
 				    document.getElementById('mypage').style.display='none';
+					document.getElementById('aboutpage').style.display='block';
 				    
 					
 				}
@@ -135,6 +158,7 @@ var app = angular.module('Sectors', []);
 			{
 			var Uname=document.getElementById("uname").value;
 			  var Upswd=document.getElementById("psw").value;
+			  $scope.email=Uname;
 			  
 			  	var varname = {email_id:Uname,password:Upswd};
 		    var jsonv = JSON.stringify(varname);
@@ -150,6 +174,10 @@ var app = angular.module('Sectors', []);
 					        else
 					        	{
 					        	$scope.value="OUT";
+					        	 alert("YOU ARE LOGGED IN!");
+					        	 $scope.cont=response.data;
+					        	 document.getElementById('id01').style.display='none';
+					        	 
 					        	}
 					
 					
@@ -162,7 +190,9 @@ var app = angular.module('Sectors', []);
 			}
 		else
 			{
-			 document.getElementById('mypage').style.display='none';	
+			document.getElementById('id01').style.display='none';
+			 document.getElementById('mypage').style.display='none';
+			 $scope.value="IN";
 			 alert(" YOU ARE LOGGED OUT !");
 			 
 			}
@@ -171,7 +201,7 @@ var app = angular.module('Sectors', []);
 	 // this.submit(Uname,Upswd, 'http://localhost:8080/RestDemoService/Login');
 	  
 	  this.flag=1;
-//	 mypage();
+      mypage();
 	
 	};
 	
@@ -183,7 +213,8 @@ var app = angular.module('Sectors', []);
 	  var email_id =document.getElementById('eid').value;
 	  var Password=document.getElementById('passwd').value;
 		var phn_no=document.getElementById('phone').value;
-
+		  $scope.email=email_id;
+		  
 	  var serviceName='http://localhost:8080/RestDemoService/SignUp';
 	 	var varname = {first_name:first_name,last_name:last_name,email_id:email_id,password:Password,phn_no:phn_no};
     var jsonv = JSON.stringify(varname);
@@ -193,7 +224,11 @@ var app = angular.module('Sectors', []);
 		
 			console.log(response.data);		//Prints success log
 			        $scope.content_new = response.data;
-			
+
+					//this.select(1);
+			        document.getElementById('home').style.display='block';
+			        document.getElementById('signup').style.display='none';
+					alert("Welcome to BREAD N BUCKS!");
 			
 		},function(response){				//Anonymus function for error callback
 		

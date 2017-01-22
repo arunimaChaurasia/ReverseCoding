@@ -6,8 +6,9 @@ import java.sql.Date;
 import java.util.Calendar;
 
 public class AccountDetail implements Serializable  {
-	private String securityCode,status;
-	int volume, curr_price;
+	 String securityCode;
+	 String status;
+	String volume, curr_price;
 	Date last_update_date;
 	Date sell_date;
 	Date buy_date;
@@ -23,16 +24,16 @@ public class AccountDetail implements Serializable  {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public int getVolume() {
+	public String getVolume() {
 		return volume;
 	}
-	public void setVolume(int volume) {
+	public void setVolume(String volume) {
 		this.volume = volume;
 	}
-	public int getCurr_price() {
+	public String getCurr_price() {
 		return curr_price;
 	}
-	public void setCurr_price(int curr_price) {
+	public void setCurr_price(String curr_price) {
 		this.curr_price = curr_price;
 	}
 	public Date getLast_update_date() {

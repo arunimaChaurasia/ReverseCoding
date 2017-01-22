@@ -14,37 +14,42 @@ public class AccountDetaillDB {
 		
 		
 		int i=0;
+		
 		String query_id="select entry_id from user_account_map where user_id =(select user_id from user_details where email_id=?)";
 		String query = "select * from account_details where entry_id IN (select entry_id from user_account_map where user_id =(select user_id from user_details where email_id=?))";
 		try {
 			PreparedStatement valid_state=connection.getConnection().prepareStatement(query_id);
 			valid_state.setString(1,login.getEmail_id());
 			ResultSet rst = valid_state.executeQuery();
-			
-			if(!rst.next())
+			//rst.next();
+			if(rst.next())
 			{
-				savedetail=null;
-				rst.close();
-				valid_state.close();
-			}
-			else{
 				PreparedStatement statement = connection.getConnection().prepareStatement(query);
 				statement.setString(1, login.getEmail_id());
 
 			 rst = statement.executeQuery();
 
 				while (rst.next()) {
-					savedetail.get(i).setSecurityCode(rst.getString("security_code"));
-					savedetail.get(i).setStatus(rst.getString("status"));
-					savedetail.get(i).setCurr_price(rst.getInt("current_price"));
-					savedetail.get(i).setVolume(rst.getInt("volume"));
-					savedetail.get(i).setBuy_date(rst.getDate("buy_date"));
-					savedetail.get(i).setSell_date(rst.getDate("sell_date"));
+					AccountDetail save=new AccountDetail();
+					save.setSecurityCode(rst.getString("security_code"));
+					save.setStatus(rst.getString("status"));
+					save.setCurr_price(rst.getString("current_price"));
+					save.setVolume(rst.getString("volume"));
+					save.setLast_update_date(rst.getDate("last_update_date"));
+					savedetail.add(save);
+					i++;
+				}
+				
+			}
+			else{
+				savedetail=null;
+				rst.close();
+				valid_state.close();
 					
 				}
 				rst.close();
-				statement.close();
-			}
+				valid_state.close();
+			
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

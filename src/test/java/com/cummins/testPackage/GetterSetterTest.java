@@ -48,12 +48,12 @@ public class GetterSetterTest{
 		userdetail.setEmail_id("abc123@somesite.com");
 		 assertTrue(userdetail.getEmail_id() == "abc123@somesite.com");
 		}
-	@Test
-	public void testSetVolume(){
-		AccountDetail accountdetail=new AccountDetail();
-		accountdetail.setVolume(100000);
-		 assertTrue(accountdetail.getVolume() == 100000);
-		}
+//	@Test
+//	public void testSetVolume(){
+//		AccountDetail accountdetail=new AccountDetail();
+//		accountdetail.setVolume(100000);
+//		 assertTrue(accountdetail.getVolume() == 100000);
+//		}
 	@Test
 	public void testSetStatus(){
 		AccountDetail accountdetail=new AccountDetail();
@@ -78,12 +78,12 @@ public class GetterSetterTest{
 		userdetail.setLast_name("Granger");
 		 assertTrue(userdetail.getLast_name() == "Granger");
 		}
-	@Test
-	public void testSetCurrPrice(){
-		AccountDetail accountdetail=new AccountDetail();
-		accountdetail.setCurr_price(123);
-		assertTrue(accountdetail.getCurr_price() == 123);
-		}
+//	@Test
+//	public void testSetCurrPrice(){
+//		AccountDetail accountdetail=new AccountDetail();
+//		accountdetail.setCurr_price(123);
+//		assertTrue(accountdetail.getCurr_price() == 123);
+//		}
 	@Test
 	public void testSec_Name(){
 		Security security=new Security();

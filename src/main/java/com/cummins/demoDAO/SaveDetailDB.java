@@ -17,12 +17,13 @@ public class SaveDetailDB {
 		int user_id = 0;
 		String query_id="select max(entry_id)  from account_details";
 		String query_id_map="select max(user_acc_map_id)  from user_account_map";
-		String query_user = "select user_id where email_id=?";
-	
+		String query_user = "select user_id from user_details where email_id= ?";
+		java.util.Date today = new java.util.Date();
+	   
 		int i=0;
 		 
-		String query = "insert into account_details values (?,?,?,?,?,?,?,?)";
-		String query_map="insert into user_account_map values (?,?,?)";
+		String query = "insert into account_details (entry_id,security_code,status,current_price,volume,last_update_date) values (?,?,?,?,?,?)";
+		String query_map="insert into user_account_map (user_acc_map_id,user_id,entry_id) values (?,?,?)";
 		
 		try {
 			Statement	result_stmt=connection.getConnection().createStatement();
@@ -38,36 +39,40 @@ public class SaveDetailDB {
 			statement.setInt(1,entry_id);
 			statement.setString(2, acc_detail.getSecurityCode());
 			statement.setString(3,acc_detail.getStatus());
-			statement.setInt(4,acc_detail.getCurr_price());
-			statement.setInt(5,acc_detail.getVolume());
-			statement.setDate(6,acc_detail.getLast_update_date());
-			statement.setDate(7,acc_detail.getSell_date());
-			statement.setDate(8,acc_detail.getBuy_date());
+			statement.setString(4,acc_detail.getCurr_price());
+			statement.setString(5,acc_detail.getVolume());
+		statement.setDate(6,new java.sql.Date(today.getTime()));
+//			statement.setDate(7,acc_detail.getSell_date());
+//			statement.setDate(8,acc_detail.getBuy_date());
 			statement.executeQuery();
 			rst.close();
 			
 			
 		 rst=result_stmt.executeQuery(query_id_map);
 			while (rst.next()) {
-				user_map=rst.getInt("max(user_acc_map)");
+				user_map=rst.getInt("max(user_acc_map_id)");
 				
 			}
 //			entry_id=5;
+			rst.close();
 			user_map ++;
 			PreparedStatement user_statement = connection.getConnection().prepareStatement(query_user);
-			statement.setString(1, login.getEmail_id());
+			user_statement.setString(1, login.getEmail_id());
 
-		 rst = statement.executeQuery();
+		 rst = user_statement.executeQuery();
 		 while (rst.next()) {
 				 user_id = rst.getInt("user_id");
 				
 			}
 
+		 rst.close();
 			PreparedStatement  map_statement = connection.getConnection().prepareStatement(query_map);
 			map_statement.setInt(1,user_map);
 			map_statement.setInt(2,user_id);
 			map_statement.setInt(3,entry_id);
-			
+		int status=map_statement.executeUpdate();
+			user_statement.close();
+			map_statement.close();
 			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="HandheldFriendly" content="true">
 	<meta charset="UTF-8">
-	<title>BREAD 'N' BUCKS</title>
+	<title  class="tooltip">BREAD 'N' BUCKS</title>
 	<link rel="icon" type="image/png" href="C:\Users\aditi\git\BreadNBucks\src\com\cummins\demo\images\favicon.ico">
 	<link rel="stylesheet" type="text/css" href="mainpage.css">
 </head>
@@ -31,7 +31,7 @@
 		
 			<div class="menu">
 				<!-- Button to open the modal login form -->
-				<button onclick="document.getElementById('id01').style.display='block'" style="margin-left:70%;">Log {{value}}</button>
+				<button onclick="document.getElementById('id01').style.display='block'" style="margin-left:70%;">LOG{{value}}</button>
 
 				<!-- The Modal -->
 				<div id="id01" class="modal">
@@ -43,14 +43,14 @@
 							<img src="http://www.hit4hit.org/img/login/user-icon-6.png" alt="Login Image" class="avatar">
 						</div>
 
-						<div class="container">
+						<div class="container" >
 							<label><b></b></label>
 								<input type="text" placeholder="Enter Email-id" id="uname" required><br>
 
 							<label><b></b></label>
 								<input type="password" placeholder="Enter Password" id="psw" required><br>
 
-							<button type="submit" ng-click="gs.login()"> Login</button><br>
+							<button type="submit" ng-click="gs.login()"> LOG{{value}}</button><br>
 		
 						</div>
 
@@ -95,21 +95,25 @@
 					
 					<div class="dropdown" >											
 						  <div class="dropdown-content"  >
-							<li class="tooltip" ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol,'http://localhost:8080/RestDemoService/securityDisplay')"><a><t>{{item.name}}</t> --- <t>{{item.symbol}}</t></a><span> This is a tooltip</span></li>
+							<li class="tooltip" ng-repeat="item in content" ng-click="gs.submit(item.name,item.symbol,'http://localhost:8080/RestDemoService/securityDisplay')"><a><t>{{item.name}}</t> --- <t>{{item.symbol}}</t></a><span>Click to get the predictions </span></li>
 <!-- 							<li class="tooltip"> Sector 1<span> This is a tooltip</span></li> -->
 <!-- 							<li> Sector 2</li> -->
 							
 						</div>					
 					</div>	
 					
+
+
+					
 				</div>
 				
+									
 <div class="form">  
         <div id="signup" class="Sgn"> 
 		
           <h1>Sign Up for Free</h1>
           
-          <form action="/" method="post">
+          <form  method="post">
           
           <div class="top-row">
             <div class="field-wrap">
@@ -143,7 +147,7 @@
             <input type="password"required autocomplete="off" id="passwd"/>
           </div>
           
-          <button type="submit" class="button button-block" ng-click=gs.signup()>Get Started</button>
+          <button type="button" class="button button-block" ng-click="gs.signup()">Get Started</button>
 		</div>
 		
           
@@ -172,38 +176,61 @@
 				<th id="code">{{sec.code}}</th>
 				<td id="price">{{sec.lastPrice}} </td>
 				<td> {{sec.eps}}</td><td>{{sec.averagePrice}}</td><td> {{sec.dayHigh}}</td><td>{{sec.dayLow}}</td><td> {{sec.faceValue}}</td><td> {{sec.totalTradedVolume}}</td> </td>
+			<td><form >
+					<input id="quant" type="number" name="quantity" min="1" max="2500">
+					</form>
+				
+				</td>
+			
 
-				<td id="status">BUY</td>
-				<td><button class="savebtn" ng-click="gs.savedata(sec.code,sec.averagePrice)">SAVE</button></td>
+				<td id="status" >BUY</td>
+				<td><button class="savebtn" ng-click="gs.savedata(sec.code,sec.averagePrice,'buy')">SAVE</button></td>
 			</tr>
 			
 <!-- 			<tr> <td> </td><td> </td> <th colspan=6>SELL STOCK</th>  <td> </td><td> </td> -->
-			
 			
 			<tr ng-repeat="sec in prediction.sellStock">
 				<th id="code">{{sec.code}}</th>
 				<td id="price">{{sec.lastPrice}} </td>
 				<td>{{sec.eps}}</td><td> {{sec.averagePrice}}</td><td> {{sec.dayHigh}}</td><td>{{sec.dayLow}}</td><td>{{sec.faceValue}}</td><td> {{sec.totalTradedVolume}}</td> 
 
-				<td id="status">SELL</td>
-				<td><button class="savebtn" ng-click="gs.savedata(sec.code,sec.averagePrice)">SAVE</button></td>
+				<td><form >
+					<input id="quant" type="number" name="quantity" min="1" max="2500">
+					</form>
+				
+				</td>
+				<td id="status" >SELL</td>
+				<td><button  class="savebtn" ng-click="gs.savedata(sec.code,sec.averagePrice)">SAVE</button></td>
 			</tr>
 		</table>
-		
+	</div>	
 
 	<div id="mypage" class="mypagetable">
 <!-- 		<img class="bckimg" href="http://maxpixel.freegreatpicture.com/static/photo/1x/Laptop-Glasses-Coffee-Bag-Pen-Notebook-Iphone-1478822.jpg"> -->
 		<br></br>
-		
+		<h1>HELLO {{cont.login.first_name}}<h1>
 		<table border=1>
-			<tr><th>COMPANY NAME</th><th>CURRENT RATE</th><th>STATUS</th> <th>LAST UPDATE DATE</th><th>SELL DATE</th><th>BUY DATE</th> </tr>
-			<tr><td>COMPANY</td><td>RATE</td><td>STATUS</td></tr>
-			<tr ng-repeat="cont in mypage"> <td>{{cont.securityCode}}</td><td>{{cont.curr_price}}</td> <td>{{cont.status}}</td> <td>{{cont.last_update_date}}</td> <td> {{cont.sell_date}}</td> <td>{{cont.buy_date}}</td></tr>
+			<tr><th>COMPANY NAME</th><th>CURRENT RATE</th><th>STATUS</th><th>VOLUME</th> <th>LAST UPDATE DATE</th></tr>
+			<tr ng-repeat="cont in cont.savedetail"> <td>{{cont.securityCode}}</td><td>{{cont.curr_price}}</td> <td>{{cont.status}}</td><td>{{cont.volume}}</td> <td>{{cont.last_update_date}}</td></tr>
 		</table>
 	</div>
 	
+	<div id="aboutpage" class="about">
+	<h1>ABOUT US</h1>
+	</div>
 	
 		</section>
+		<div class="widget" id="wid">
+					
+			<script type="text/javascript"> var _mcq=["6",""];</script>
+			<span id='_mc_mg6'></span>
+			<script language="JavaScript" src="http://stat1.moneycontrol.com/mcjs/common/mc_widget.js"></script>
+<!-- 			<noscript> -->
+<!-- <!-- 			<a href="http://www.moneycontrol.com">Sensex/Nifty</a> --> -->
+<!-- 			</noscript> -->
+					
+		</div>
+
 		
 	</main>
 	<footer>
