@@ -1,7 +1,10 @@
 package com.cummins.Stocks;
 
 import java.io.Serializable;
-
+/*
+This is a POJO class for required classes
+Variables name symbol
+*/
 public class Sector implements Serializable {
 	private String name;
 	private String symbol;

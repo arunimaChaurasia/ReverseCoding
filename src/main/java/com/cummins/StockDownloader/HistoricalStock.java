@@ -10,11 +10,17 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Scanner;
 
+/*
+This is a class for extracting the historical data from yahoo api
+@param Stock class object,symbol stock symbol,start Gregorian calendar start date,end Gregorian calendar end date
+saves the data in the respective variables
+@See Stock 
+8*/
 
 public class HistoricalStock {
 	
 	
-	private ArrayList<GregorianCalendar> dates;
+	private ArrayList<Integer> dates;
 	private ArrayList<Double> opens;
 	private ArrayList<Double> highs;
 	private ArrayList<Double> lows;
@@ -26,7 +32,7 @@ public class HistoricalStock {
 	
 	public void historicalStock(Stock s,String symbol,GregorianCalendar start,GregorianCalendar end){
 		
-		dates=new ArrayList<GregorianCalendar>();
+		dates=new ArrayList<Integer>();
 		opens=new ArrayList<Double>();
 		highs=new ArrayList<Double>();
 		lows=new ArrayList<Double>();
@@ -56,11 +62,10 @@ public class HistoricalStock {
 
 			DateFormat format = new SimpleDateFormat( "yyyy-MM-dd" );
 			Date       date = format.parse(attributes[0] );
-			Calendar   calendar = new GregorianCalendar();
+			//Calendar   calendar = new GregorianCalendar();
 			
-			calendar.setTime( date );
-
-
+			
+			int date_curr=date.getDate();
 			double open=Double.parseDouble(attributes[1]);
 			double high=Double.parseDouble(attributes[2]);
 			double low=Double.parseDouble(attributes[3]);
@@ -68,7 +73,7 @@ public class HistoricalStock {
 			int volume=Integer.parseInt(attributes[5]);
 			double adjclose=Double.parseDouble(attributes[6]);
 		
-			
+			dates.add(date_curr);
 			opens.add(open);
 			highs.add(high);
 			lows.add(low);
@@ -76,16 +81,17 @@ public class HistoricalStock {
 			volumes.add(volume);
 			adjcloses.add(adjclose);
 			
-			s.setOpens(opens);
-			s.setCloses(closes);
-			s.setHighs(highs);
-			s.setAdjcloses(adjcloses);
-			s.setVolumes(volumes);
-			s.setLows(lows);
+			
 		
 			
 		}
-		
+		s.setDates(dates);
+		s.setOpens(opens);
+		s.setCloses(closes);
+		s.setHighs(highs);
+		s.setAdjcloses(adjcloses);
+		s.setVolumes(volumes);
+		s.setLows(lows);
 			
 	}
 	catch(Exception e)

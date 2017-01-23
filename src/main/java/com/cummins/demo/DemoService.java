@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.cummins.PredictionModel.Prediction;
+import com.cummins.PredictionPython.PredictionFactory;
 import com.cummins.StockDownloader.StockFactory;
 import com.cummins.Stocks.Security;
 import com.cummins.UserDetails.AccountDetail;
@@ -61,7 +62,8 @@ public class DemoService {
 		SecurityDB securitydb = new SecurityDB(conn, security.getSymbol());
 		StockFactory stockfactory = new StockFactory();
 		stockfactory.stockFactory(securitydb.returnStocks());
-		Prediction predictStocks = new Prediction(securitydb.returnStocks());
+		Prediction predictStocks=new Prediction(securitydb.returnStocks());
+	//	PredictionFactory predictStocks = new PredictionFactory(securitydb.returnStocks());
 
 		ObjectMapper mapper = new ObjectMapper();
 
@@ -161,7 +163,9 @@ public class DemoService {
 	String details=new String();
 	ObjectMapper mapper = new ObjectMapper();
 	try {
-		details = mapper.writeValueAsString("Details are saved!");
+		
+		UserFactory user=new UserFactory(conn, savedetails.getLogin());
+		details = mapper.writeValueAsString(user);
 	} catch (JsonProcessingException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

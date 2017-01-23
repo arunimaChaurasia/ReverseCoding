@@ -1,5 +1,10 @@
 package com.cummins.Stocks;
 
+/*
+This is a POJO class for required classes
+Variables name symbol
+*/
+
 public class Security {
 String name,symbol;
 

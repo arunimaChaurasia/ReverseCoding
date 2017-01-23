@@ -7,7 +7,11 @@ import java.util.Scanner;
 import java.util.Date;
 
 import com.cummins.Stocks.*;
-
+/*
+This is factory class which call our historical data class and current data downloader class.
+@param ArrayList stocks of stock class
+@see stock HistoricalStock CurrentStockData
+*/
 public class StockFactory {
 	
 	public void stockFactory(ArrayList<Stock> stocks){

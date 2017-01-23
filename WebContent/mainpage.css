@@ -59,14 +59,16 @@ ul.tab li a:focs, .active {background-color: #ccc;}
 	top:40%;
 	width : 20.57%;
 	height : 9.25%;
-	background : url(https://sector-project.eu/fileadmin/downloads/SECTOR_logo_PRINT.jpg) no-repeat;
+	border-width:5px;
+	font-text:Times New Roman;
+	/* background : url(https://sector-project.eu/fileadmin/downloads/SECTOR_logo_PRINT.jpg) no-repeat; */
 	/*text-decoration: underline;*/
 	border-radius : 1.95% 0.78%;
-	padding : 1.56%;
-	background-size : 120%;
+	padding : 0.20%;
+	/* background-size : 120%;
 	background-repeat : no-repeat;
 	background-position : 60% 45%;
-	
+ */	
 	/*opacity : .8;*/
 	/*background-color: #A0522D;*/
 	cursor : pointer;
@@ -179,9 +181,9 @@ h2 {
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
-form {
-    /* border: 3px solid #f1f1f1; */
-}
+/* form {
+     border: 3px solid #f1f1f1; 
+} */
 
 input[type=text], input[type=password]  ,input[type=email] ,input[type=phone]{
     width: 100%;
@@ -453,6 +455,8 @@ tr:nth-child(even){
 {
 	position:relative;
 	width:60px;
+  	background-color: #e7e7e7;
+  	color: black;
 }
 
 
@@ -464,6 +468,8 @@ tr:nth-child(even){
 .tooltip{
 	position:relative;
 	z-index:4;
+	width:60%;
+	color:white;
 }
 
 .tooltip span{
@@ -474,8 +480,8 @@ tr:nth-child(even){
 }
 .tooltip:hover span {
 	display:block;
-	width:100px;
-	height:20px;
+	width:50%;
+	height:70%;
 	color:#FFF;
 	background:#535663;
 	font-size:11px;
@@ -483,12 +489,54 @@ tr:nth-child(even){
 	border-radius:6px;
 	left:80%;
 }
+.about
+{
+	display:block;
+	background-color:#339bce;
+	color:white;
+	padding:5%;
+}
+.image{
+	width:100%;
+	padding-left:28%;
+}
+.sector{
+	display:block;
+	background-color:#339bce;
+	color:white;
+	padding:1%;
+}
+
+h3{
+	text-decoration:underline;
+	text-align:center;
+	color:black;
+}
+p{
+	text-align:center;
+	font-size:140%;
+}
+.homeinfo{
+	background-color:white;
+	color:black;
+	padding-top:45%;
+	padding-left:10%;
+	padding-right:10%;
+}
+.widget
+{
+	/* display:block; */
+	padding-top:5%;
+	padding-left:40%;
+}
+
 
 
 footer{
     position:absolute;
+    display:block;
     height:5%;
-    bottom:0px;
+    bottom:0%;
     left:0px;
     right:0px;
     margin-bottom:0px;
@@ -500,27 +548,61 @@ footer{
 
 /* Tabled Portrait */
 @media screen and (max-device-width : 720px) {
+	
+	.homeinfo{
+	padding-top:95%;}
+	p{
+	font-size:80%;}
+	.image{
+	padding-left:0%;}
     .tab { 
     margin-top:50%;
     width:100%;
     text-decoration: none;
     transition: 0.3s;
     font-size:1rem; }
+    
     .cancelbtn{width:20%;}
-    .dropdown{width:26%;
-    background-size:180%;
-    background-position:50% 40%;}
+    
+    .dropdown{width:32%;
+    right:65%;
+    }
+    element {
+    font-size=15pt;}
     
     h2{font-size:150%;
     left : 40%;
     text-shadow : 2px 1px black;
+    top:35%;
     }
    
    html {font-size:100%;}
    
    ul.tab{margin-top:15%;}
-   button{padding:7px 10px;}
-   ul.tab li a{font-sixe:10%;}
-    
+   ul.tab li{width:16%;}
+   
+   button{padding:14px 5px;}
+   
+   ul.tab li a{font-size:95%;
+   padding : 10% 10%;}
+   
+   ul.tab li a:hover {
+	background-color: #ddd;
+	height:30%;
+	}
+	.bckimg{height:60%;}
+	
+	.button{font-size:1rem;}
+	.modal-content{
+	width:70%;}
+	
+   .form {max-width:80%;}
+   
+   input,textarea{height:50%;}
+   
+   h1{height:15%;}
+   
+   input[type=text], input[type=password]  ,input[type=email] ,input[type=phone]{padding:6px 10px;}
+	
   .modal { width:100%; margin:0; border:none; }
 }

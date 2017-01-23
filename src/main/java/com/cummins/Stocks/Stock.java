@@ -3,6 +3,10 @@ package com.cummins.Stocks;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+/*
+This is a POJO class for all the variables we are retrieving.
+*/
+
 public class Stock {
 
 	String code;
@@ -31,7 +35,7 @@ public class Stock {
 	String deliveryToTradedQuaantity;
 	String totalTradedVolume;
 	String eps;
-	private ArrayList<GregorianCalendar> dates;
+	private ArrayList<Integer> dates;
 	private ArrayList<Double> opens;
 	private ArrayList<Double> highs;
 	private ArrayList<Double> lows;
@@ -66,7 +70,7 @@ public class Stock {
 		this.deliveryToTradedQuaantity = deliveryToTradedQuaantity;
 		this.totalTradedVolume = totalTradedVolume;
 		this.eps = eps;
-		setDates(new ArrayList<GregorianCalendar>());
+		dates=new ArrayList<Integer>();
 		opens=new ArrayList<Double>();
 		highs=new ArrayList<Double>();
 		lows=new ArrayList<Double>();
@@ -275,7 +279,7 @@ public void setEps(String eps) {
 
 
 
-	public void setDates(ArrayList<GregorianCalendar> dates) {
+	public void setDates(ArrayList<Integer> dates) {
 		this.dates = dates;
 	}
 
@@ -303,7 +307,7 @@ public void setEps(String eps) {
 		this.adjcloses = adjcloses;
 	}
 	
-	public ArrayList<GregorianCalendar> getDates() {
+	public ArrayList<Integer> getDates() {
 		return dates;
 	}
 	public ArrayList<Double> getOpens() {

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 
 import com.cummins.UserDetails.AccountDetail;
 import com.cummins.UserDetails.Userdetail;
+/*
+ * This is the class which fetches the details of  user account from database oracle 11g xe
+ * */
 
 public class AccountDetaillDB {
 	

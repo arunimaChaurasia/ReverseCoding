@@ -2,7 +2,12 @@ package com.cummins.PredictionModel;
 
 import com.cummins.Stocks.*;
 import java.util.ArrayList;
-
+/*
+This is a factory class which calls our change class method delta.This contains only a constuctorof the respective class
+@param stock stock class object
+@return none
+@See Change Stock
+*/
 public class Prediction {
 
 	ArrayList<Stock> buyStock=new ArrayList<Stock>();

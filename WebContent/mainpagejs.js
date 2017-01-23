@@ -6,13 +6,14 @@ var app = angular.module('Sectors', []);
 			this.tab=1;
 			this.flag=0;
 			var value;
+			var details;
 			var cont;
 			$scope.value="IN";
 			var email="";
 			window.onload=function()
 			{
 			    document.getElementById('home').style.display='block';
-				document.getElementById('wid').style.display='block';
+				//document.getElementById('wid').style.display='block';
 				document.getElementById('signup').style.display='none';
 				document.getElementById('mypage').style.display='none';
 				document.getElementById('sector').style.display='none';
@@ -29,31 +30,56 @@ var app = angular.module('Sectors', []);
 											});
 					
 			};
-			this.savedata=function(Company,Price,status)
+			this.savedata=function(Company,Price)
 			{
 				
 				console.log(Company);
 				if ($scope.value=="OUT")
 					{
-					var Status=document.getElementById("status").textContent;
+					//var Status=document.getElementById("status").textContent;
 					var volume=document.getElementById("quant").textContent;
-					  var serviceName='http://localhost:8080/RestDemoService/Savenew';
-					 	var varname = {login:{email_id:$scope.email},savedetail:[{securityCode:Company,curr_price:Price,status:Status,volume:volume}]};
-				    var jsonv = JSON.stringify(varname);
-					console.log(jsonv);
-						
-									$http.post(serviceName,jsonv,{'Content':'application/json','Accept':'application/json'})
-									.then(function(response){			//Anonymus function for success callback
-						
-										console.log(response.data);
-										alert("DATA IS SAVED!");//Prints success log
+					var volumeBuy=document.getElementById("quant1").textContent;
+					
+					if(volumeBuy=="")
+						{ var serviceName='http://localhost:8080/RestDemoService/Savenew';
+					 	var varname = {login:{email_id:$scope.email},savedetail:[{securityCode:Company,curr_price:Price,status:"BUY",volume:volumeBuy}]};
+					    var jsonv = JSON.stringify(varname);
+						console.log(jsonv);
 							
+										$http.post(serviceName,jsonv,{'Content':'application/json','Accept':'application/json'})
+										.then(function(response){			//Anonymus function for success callback
 							
-									},function(response){				//Anonymus function for error callback
-						
-							console.log("There was an error: " + response.status + " " + response.statusText);
-															//Prints error log
-											});
+											$scope.cont=response.data;
+											alert("DATA IS SAVED!");//Prints success log
+								
+								
+										},function(response){				//Anonymus function for error callback
+							
+								console.log("There was an error: " + response.status + " " + response.statusText);
+																//Prints error log
+												});
+						}
+					else
+						{
+						var serviceName='http://localhost:8080/RestDemoService/Savenew';
+					 	var varname = {login:{email_id:$scope.email},savedetail:[{securityCode:Company,curr_price:Price,status:"SELL",volume:volume}]};
+					    var jsonv = JSON.stringify(varname);
+						console.log(jsonv);
+							
+										$http.post(serviceName,jsonv,{'Content':'application/json','Accept':'application/json'})
+										.then(function(response){			//Anonymus function for success callback
+							
+											$scope.cont=response.data;
+											alert("DATA IS SAVED!");//Prints success log
+								
+								
+										},function(response){				//Anonymus function for error callback
+							
+								console.log("There was an error: " + response.status + " " + response.statusText);
+																//Prints error log
+												});
+						}
+					 
 							
 					}
 				else
@@ -81,7 +107,7 @@ var app = angular.module('Sectors', []);
 				if (this.tab === 1)
 				{
 					document.getElementById('home').style.display='block';
-				document.getElementById('wid').style.display='block';
+				//document.getElementById('wid').style.display='block';
 				document.getElementById('sector').style.display='none';
 				 document.getElementById('signup').style.display='none';
 				document.getElementById('mypage').style.display='none';
@@ -90,7 +116,7 @@ var app = angular.module('Sectors', []);
 				else if (this.tab === 2)
 				{
 					document.getElementById('home').style.display='none';
-					document.getElementById('wid').style.display='none';
+				//	document.getElementById('wid').style.display='none';
 				   document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='none';
 					document.getElementById('mypage').style.display='block';
@@ -100,7 +126,7 @@ var app = angular.module('Sectors', []);
                 else if (this.tab === 3)
 				{
 					document.getElementById('home').style.display='none';
-					document.getElementById('wid').style.display='none';
+					//document.getElementById('wid').style.display='none';
 					document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='block';
 				    document.getElementById('mypage').style.display='none';	
@@ -109,7 +135,7 @@ var app = angular.module('Sectors', []);
                 else if (this.tab === 4)
 				{
 				document.getElementById('home').style.display='none';
-				document.getElementById('wid').style.display='none';
+				//document.getElementById('wid').style.display='none';
 				document.getElementById('sector').style.display='none';
 					document.getElementById('signup').style.display='none';
 				    document.getElementById('mypage').style.display='none';
@@ -129,7 +155,9 @@ var app = angular.module('Sectors', []);
 				} 
             };
 	
-
+            this.back=function(){
+            	document.getElementById('home').style.display='block';
+            }
 	this.submit = function(UIname,UIsymbol,serviceName) {
 	
 		this.select(5);

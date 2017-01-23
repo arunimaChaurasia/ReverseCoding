@@ -1,5 +1,10 @@
 package com.cummins.PredictionModel;
 
+/*
+This is a class which returns prediction according to the PERatio calculated
+@param none
+@return PERatio calculated
+*/
 public class PERatio {
 
 	public double marketValuePerShare;

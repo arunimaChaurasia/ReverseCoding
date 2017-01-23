@@ -3,6 +3,12 @@ package com.cummins.PredictionModel;
 import java.util.ArrayList;
 
 import com.cummins.Stocks.*;
+/*
+This is a class which predicts whether we should buy a stock or sell it according to the opens and highs of historical data.
+@param stocks ArrayList of stock class Prediction object of class prediction
+saves into arrayList of buy or sell according to the prediction
+@see Prediction Stock
+*/
 
 public class Change {
 	
