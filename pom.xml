@@ -221,6 +221,6 @@
 		<system>Jenkins</system>
 	</ciManagement>
 	<scm>
-		<url>https://github.com/The-Team-A/BreadNBucks.git</url>
+		<url>https://github.com/arunimaChaurasia/ReverseCoding.git</url>
 	</scm>
 </project>
