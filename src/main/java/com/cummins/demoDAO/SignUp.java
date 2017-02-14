@@ -31,8 +31,8 @@ public class SignUp implements Serializable {
 			statement.setInt(1,user_id);
 			statement.setString(2, signup.getEmail_id());
 			statement.setString(3,signup.getPassword());
-			statement.setInt(4,signup.getPoints());
-			statement.executeQuery();
+			statement.setInt(4,0);
+			statement.executeUpdate();
 			rst.close();
 			statement.close();
 		} catch (SQLException e) {

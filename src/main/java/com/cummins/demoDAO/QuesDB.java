@@ -19,32 +19,36 @@ public class QuesDB {
 		 
 		
 		ArrayList<Integer> randNo=new ArrayList<Integer>();
-		String query="select * from questions where qid=";
-		for(int i=0;i<14;i++)
+		String query="select * from questions where qid IN (";
+		for(int i=0;i<39;i++)
 		{
-			query.concat("?,");
+			query=query.concat("?,");
 		}
-		query.concat("?");
+		query=query.concat("?)");
+		//System.out.println(query);
 		try {
 			PreparedStatement statement=connection.getConnection().prepareStatement(query);
-			
+			//statement.setInt(1, 15);
+//			System.out.println(query);
 			if(level==1)
 			{
-				for(int i=0;i<15;i++)
-				{
+				int i=1;
+				while( i<=40){
 					int numb;
 					numb=(int)(62*Math.random());
 					if(!randNo.contains(numb))
 					{
 						randNo.add(numb);
 						statement.setInt(i, numb);
+						i++;
 						
 					}
 				}
 			}
 			else
 			{
-				for(int i=0;i<15;i++)
+				int i=1;
+				while( i<=40)
 				{
 					int numb;
 					numb=(int)(62*Math.random())+101;
@@ -52,12 +56,13 @@ public class QuesDB {
 					{
 						randNo.add(numb);
 						statement.setInt(i, numb);
+						i++;
 						
 					}
 				}
 			}
-			
-			
+//			
+//			
 			ResultSet rst= statement.executeQuery();
 			int count=0;
 			while(rst.next())
@@ -65,16 +70,17 @@ public class QuesDB {
 				Question temp=new Question();
 				temp.setQid(rst.getInt("qid"));
 				temp.setQuestion(rst.getString("question"));
-				temp.setOption1("option1");
-				temp.setOption2("option2");
-				temp.setOption3("option3");
-				temp.setOption4("option4");
+				temp.setOption1(rst.getString("option1"));
+				temp.setOption2(rst.getString("option2"));
+				temp.setOption3(rst.getString("option3"));
+				temp.setOption4(rst.getString("option4"));
 				question15.add(count, temp);
 				count++;
 			}
 			rst.close();
 			statement.close();
-		} catch (SQLException e) {
+		
+		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
