@@ -2,14 +2,12 @@
 /* 	width:1024px; */
 /* 	margin:0px auto; */
 /* } */
-.titleName{
-	margin-left:28.30%;
-    margin-top:1%;
-	text-align:center;
-	display:inline;
-	background-color:#F0E68C;
-
-}	
+body{
+	background: url("image3.jpg");
+	background-size: cover;
+        background-repeat: no-repeat;
+}
+	
 
 /* Style the list */
 ul.tab {
@@ -77,12 +75,12 @@ ul.tab li a:focs, .active {background-color: #ccc;}
 }
 
 
-h2 { 
+/*h2 { 
    position: fixed; 
    top: 15.62%; 
    left: 0; 
    width: 100%; 
-}
+}*/
 
 .dropdown-content {
     display: none;
@@ -185,25 +183,18 @@ h2 {
      border: 3px solid #f1f1f1; 
 } */
 
-input[type=text], input[type=password]  ,input[type=email] ,input[type=phone]{
+/*input[type=text], input[type=password]  ,input[type=email] ,input[type=phone]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-}
+}*/
 
 button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-	position: absolute;
-    margin: 3px 0;
-	margin-top:4px;
-    border: none;
-    cursor: pointer;
-    width: 20%;
+    
+	
 }
 
 .cancelbtn {
@@ -304,10 +295,25 @@ body {
 }
 
 
-h1 {
+h1{
   text-align:center;
-  color:$white;
+  color: #ffffff;
+  font-family:cursive;
+  font-size:250%;
+  /*font-weight:$thin;*/
+  margin:0 0 40px;
+  -moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+-ms-transform: scale(-1, 1);
+transform: scale(-1, 1);
+}
+h2,h3 {
+  text-align:center;
+  color: #ffffff;
+  font-size:180%;
   font-weight:$thin;
+  /*font-family:serif;*/
   margin:0 0 40px;
 }
 
@@ -315,7 +321,7 @@ label {
   position:absolute;
   transform:translateY(-30px);
   left:13px;
-  color:rgba($white,.5);
+  color:#ffffff;
   transition:all 0.25s ease;
   -webkit-backface-visibility: hidden;
   pointer-events: none;
@@ -342,14 +348,12 @@ label.highlight {
 input, textarea {
   font-size:22px;
   display:block;
-  width:95%;
+  background:none;
+  width:90%;
   height:100%;
   padding:5px 10px;
-  background:none;
-  background-image:none;
   border:1px solid $gray-light;
-  color:$white;
-  border-radius:0;
+  border-radius:10px;
   transition:border-color .25s ease, box-shadow .25s ease;
   &:focus {
 		outline:0;
@@ -363,13 +367,21 @@ input, textarea {
 }
 
 .button {
-  border:0;
-  outline:none;
-  border-radius:0;
+	background-color: Transparent;
+	border:none;
+    color: white;
+    padding: 14px 20px;
+	position: absolute;
+    margin: 3px 0;
+	margin-top:4px;
+    cursor: pointer;
+	display:block;
+	  width:46%;
+outline:none;
   padding:15px 0;
   font-size:2rem;
   font-weight:$bold;
-  text-transform:uppercase;
+  font-family:times;
   letter-spacing:.1em;
   background:$main;
   color:$white;
@@ -380,9 +392,12 @@ input, textarea {
   }
 }
 
-.button-block {
-  display:block;
-  width:44%;
+button1{
+	 border:20% solid $gray-light;
+	background-color:white;
+	width=50%;
+
+}
 }
 
 .forgot {
@@ -401,7 +416,7 @@ input, textarea {
     position: absolute; 
 
 }
-h2 { 
+/*h2 { 
 	
    position: absolute; 
    top: 30.62%; 
@@ -412,7 +427,7 @@ h2 {
    font-size : 300%;
    word-spacing : 0.78%;
    text-shadow : 5px 4px black;
-}
+}*/
 
 table {
     border-collapse: collapse;
@@ -507,14 +522,15 @@ tr:nth-child(even){
 	padding:1%;
 }
 
-h3{
+/*h3{
 	text-decoration:underline;
 	text-align:center;
 	color:black;
-}
+}*/
 p{
-	text-align:center;
+	text-align:left;
 	font-size:140%;
+	color:#ffffff;
 }
 .homeinfo{
 	background-color:white;
@@ -570,11 +586,11 @@ footer{
     element {
     font-size=15pt;}
     
-    h2{font-size:150%;
+/*  h2{font-size:150%;
     left : 40%;
     text-shadow : 2px 1px black;
     top:35%;
-    }
+    }*/
    
    html {font-size:100%;}
    
@@ -600,7 +616,7 @@ footer{
    
    input,textarea{height:50%;}
    
-   h1{height:15%;}
+ 
    
    input[type=text], input[type=password]  ,input[type=email] ,input[type=phone]{padding:6px 10px;}
 	

@@ -3,9 +3,7 @@ package com.cummins.UserDetails;
 import java.io.Serializable;
 
 public class Userdetail implements Serializable{
-	String first_name;
-	String last_name;
-	String phn_no;
+	int points;
 	String email_id,password;
 
 	public String getEmail_id() {
@@ -24,31 +22,12 @@ public class Userdetail implements Serializable{
 		this.password = password;
 	}
 
-	
-
-	public void setPhn_no(String phn_no) {
-		this.phn_no = phn_no;
+	public int getPoints() {
+		return points;
 	}
 
-
-	
-	public String getFirst_name() {
-		return first_name;
-	}
-
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-	public String getPhn_no() {
-		return phn_no;
+	public void setPoints(int points) {
+		this.points = points;
 	}
 
 }

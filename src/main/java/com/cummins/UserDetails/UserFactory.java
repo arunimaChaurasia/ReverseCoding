@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import com.cummins.demoDAO.DataBaseConn;
 import com.cummins.demoDAO.AccountDetaillDB;
 import com.cummins.demoDAO.UserDetailsDB;
+import com.cummins.questions.Question;
 
 public class UserFactory {
 	Userdetail login;
-	ArrayList<AccountDetail> savedetail=new ArrayList<AccountDetail>();
+	Question ans;
 	public UserFactory()
 	{
 		
@@ -18,8 +19,7 @@ public class UserFactory {
 		login=log;
 		UserDetailsDB userDetail=new UserDetailsDB();
 		userDetail.getUserDetails(conn, login);
-		AccountDetaillDB savedb=new AccountDetaillDB();
-		savedb.getUser(conn, login, savedetail);
+		
 	}
 	public Userdetail getLogin() {
 		return login;
@@ -27,10 +27,11 @@ public class UserFactory {
 	public void setLogin(Userdetail login) {
 		this.login = login;
 	}
-	public ArrayList<AccountDetail> getSavedetail() {
-		return savedetail;
+	public Question getAns() {
+		return ans;
 	}
-	public void setSavedetail(ArrayList<AccountDetail> savedetail) {
-		this.savedetail = savedetail;
+	public void setAns(Question ans) {
+		this.ans = ans;
 	}
+	
 }

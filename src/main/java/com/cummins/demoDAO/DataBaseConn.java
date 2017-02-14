@@ -13,7 +13,7 @@ private	Connection connection ;
 
 		try {
 
-			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Class.forName("com.mysql.jdbc.Driver");
 
 		} catch (ClassNotFoundException e) {
 
@@ -31,7 +31,7 @@ private	Connection connection ;
 
 			connection = DriverManager.getConnection(
 
-					"jdbc:oracle:thin:@Aditi_Sharma:1521:XE", "SYSTEM", "password");
+					"jdbc:mysql://localhost:3306/reverse", "root", "root123");
 
 		} catch (SQLException e) {
 

@@ -13,7 +13,7 @@ public class UserValidation {
 		String password = new String();
 		
 
-		String query = "select password from user_details where email_id=?";
+		String query = "select * from userdetails where emailid=?";
 		try {
 			PreparedStatement statement = connection.getConnection().prepareStatement(query);
 			statement.setString(1, login.getEmail_id());

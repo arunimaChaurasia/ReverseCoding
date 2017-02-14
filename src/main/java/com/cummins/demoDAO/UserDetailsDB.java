@@ -14,7 +14,7 @@ public class UserDetailsDB {
 		 
 		
 
-		String query = "select * from user_details where email_id=?";
+		String query = "select points from userdetails where emailid=?";
 		try {
 			PreparedStatement statement = connection.getConnection().prepareStatement(query);
 			statement.setString(1, user.getEmail_id());
@@ -22,9 +22,7 @@ public class UserDetailsDB {
 			ResultSet rst = statement.executeQuery();
 
 			while (rst.next()) {
-				user.setFirst_name(rst.getString("first_name"));
-				user.setLast_name(rst.getString("last_name"));
-				user.setPhn_no(rst.getString("phone_no"));
+				user.setPoints(rst.getInt("Points"));
 			}
 			rst.close();
 			statement.close();

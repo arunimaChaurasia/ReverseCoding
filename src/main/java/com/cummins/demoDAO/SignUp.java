@@ -15,8 +15,8 @@ public class SignUp implements Serializable {
 	{
 		
 		
-		String query_id="select max(user_id) as user_id1 from user_details";
-		String query = "insert into user_details  (user_id,first_name,last_name,phone_no,email_id,password) values (?,?,?,?,?,?)";
+		String query_id="select max(uid) as user_id1 from userdetails";
+		String query = "insert into userdetails  (uid,emailid,password,points) values (?,?,?,?)";
 		
 		try {
 			Statement result_stmt=connection.getConnection().createStatement();
@@ -29,11 +29,9 @@ public class SignUp implements Serializable {
 			System.out.println(user_id);
 			PreparedStatement  statement = connection.getConnection().prepareStatement(query);
 			statement.setInt(1,user_id);
-			statement.setString(2, signup.getFirst_name());
-			statement.setString(3,signup.getLast_name());
-			statement.setString(4,signup.getPhn_no());
-			statement.setString(5,signup.getEmail_id());
-			statement.setString(6,signup.getPassword());
+			statement.setString(2, signup.getEmail_id());
+			statement.setString(3,signup.getPassword());
+			statement.setInt(4,signup.getPoints());
 			statement.executeQuery();
 			rst.close();
 			statement.close();
