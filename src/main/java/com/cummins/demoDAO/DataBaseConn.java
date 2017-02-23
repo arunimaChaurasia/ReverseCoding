@@ -31,7 +31,7 @@ private	Connection connection ;
 
 			connection = DriverManager.getConnection(
 
-					"jdbc:mysql://localhost:3306/reverse", "root", "root123");
+					"jdbc:mysql://172.16.26.3:3306/reverse", "root", "root123");
 
 		} catch (SQLException e) {
 

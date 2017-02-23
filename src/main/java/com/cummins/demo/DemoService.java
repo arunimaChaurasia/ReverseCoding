@@ -16,6 +16,7 @@ import com.cummins.UserDetails.Userdetail;
 import com.cummins.demoDAO.AccountDetaillDB;
 import com.cummins.demoDAO.DataBaseConn;
 import com.cummins.demoDAO.QuesDB;
+import com.cummins.demoDAO.TopDAO;
 import com.cummins.demoDAO.SaveDetailDB;
 import com.cummins.demoDAO.SignUp;
 import com.cummins.demoDAO.UserDetailsDB;
@@ -130,17 +131,17 @@ public class DemoService {
 	}
 	
 	@RequestMapping(value = "/Savenew", method = RequestMethod.POST, produces = "application/json", consumes = "application/json")
-	public @ResponseBody String SaveDetails(@RequestBody UserFactory savedetails) {
+	public @ResponseBody String Save(@RequestBody Userdetail savedetails) {
 		//System.out.println(signup.getUserName());
-	SaveDetailDB save=new	SaveDetailDB();
-	int ans_value=save.getSaveDetailDB(conn, savedetails.getAns());
+	//SaveDetailDB save=new	SaveDetailDB();
+	//int ans_value=save.getSaveDetailDB(conn, savedetails.getAns());
 	String details=new String();
 	ObjectMapper mapper = new ObjectMapper();
 	try {
 		
 		AccountDetaillDB user=new AccountDetaillDB();
-		user.getUser(conn, savedetails.getLogin(), ans_value);
-		details = mapper.writeValueAsString(savedetails.getLogin());
+		user.getUser(conn, savedetails);
+		details = mapper.writeValueAsString(savedetails);
 	} catch (JsonProcessingException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -171,6 +172,26 @@ public class DemoService {
 		
 
 	}
+	
+	@RequestMapping(value = "/Leader", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody String LeaderBoard() {
+
+		
+		ObjectMapper mapper = new ObjectMapper();
+		TopDAO user1=new TopDAO(conn);
+
+		// Object to JSON in String
+		String jsonInString = new String();
+		try {
+			jsonInString = mapper.writeValueAsString(user1.getTop10ser());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("service called");
+		return jsonInString;
+	}
+
 
 }
  

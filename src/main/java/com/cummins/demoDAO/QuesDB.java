@@ -20,7 +20,7 @@ public class QuesDB {
 		
 		ArrayList<Integer> randNo=new ArrayList<Integer>();
 		String query="select * from questions where qid IN (";
-		for(int i=0;i<39;i++)
+		for(int i=0;i<49;i++)
 		{
 			query=query.concat("?,");
 		}
@@ -33,7 +33,7 @@ public class QuesDB {
 			if(level==1)
 			{
 				int i=1;
-				while( i<=40){
+				while( i<=50){
 					int numb;
 					numb=(int)(62*Math.random());
 					if(!randNo.contains(numb))
@@ -48,7 +48,7 @@ public class QuesDB {
 			else
 			{
 				int i=1;
-				while( i<=40)
+				while( i<=50)
 				{
 					int numb;
 					numb=(int)(62*Math.random())+101;
@@ -74,6 +74,7 @@ public class QuesDB {
 				temp.setOption2(rst.getString("option2"));
 				temp.setOption3(rst.getString("option3"));
 				temp.setOption4(rst.getString("option4"));
+				temp.setCorrectAns(rst.getString("correctAns"));
 				question15.add(count, temp);
 				count++;
 			}

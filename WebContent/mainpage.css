@@ -47,7 +47,31 @@ ul.tab li a:hover {
 /* Create an active/current tablink class */
 ul.tab li a:focs, .active {background-color: #ccc;}
 
+h1{
+  text-align:center;
+  color: #ffffff;
+  font-family:cursive;
+  
+  margin:0 0 40px;
+  -moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+-ms-transform: scale(-1, 1);
+transform: scale(-1, 1);
+}
 
+h2,h3,h4 {
+  text-align:center;
+  color: #ffffff;
+  
+  font-weight:$thin;
+  
+  margin:0 0 40px;
+}
+
+.btn2{
+	margin-left:46%;
+}
 .dropdown {
     /*position: absolute;*/
     /*display: inline-block;*/
@@ -75,12 +99,6 @@ ul.tab li a:focs, .active {background-color: #ccc;}
 }
 
 
-/*h2 { 
-   position: fixed; 
-   top: 15.62%; 
-   left: 0; 
-   width: 100%; 
-}*/
 
 .dropdown-content {
     display: none;
@@ -192,10 +210,7 @@ ul.tab li a:focs, .active {background-color: #ccc;}
     box-sizing: border-box;
 }*/
 
-button {
-    
-	
-}
+
 
 .cancelbtn {
     width: auto;
@@ -243,6 +258,8 @@ span.psw {
 }
 body {
   font-family: 'Titillium Web', sans-serif;
+  color:#ffffff;
+  font-size:20px;
 }
 
 
@@ -279,6 +296,7 @@ body {
     text-align:center;
     cursor:pointer;
     transition:.5s ease;
+    color:#ffffff;
     &:hover {
       background:$main-dark;
       color:$white;
@@ -295,12 +313,12 @@ body {
 }
 
 
-h1{
+/* h1{
   text-align:center;
   color: #ffffff;
   font-family:cursive;
   font-size:250%;
-  /*font-weight:$thin;*/
+  font-weight:$thin;
   margin:0 0 40px;
   -moz-transform: scale(-1, 1);
 -webkit-transform: scale(-1, 1);
@@ -308,14 +326,14 @@ h1{
 -ms-transform: scale(-1, 1);
 transform: scale(-1, 1);
 }
-h2,h3 {
+h2,h3,h4 {
   text-align:center;
   color: #ffffff;
   font-size:180%;
   font-weight:$thin;
-  /*font-family:serif;*/
+  font-family:serif;
   margin:0 0 40px;
-}
+} */
 
 label {
   position:absolute;
@@ -345,7 +363,12 @@ label.highlight {
 	color:$white;
 }
 
-input, textarea {
+.levels{
+	color:#ffffff;
+	font-size:140%;
+}
+
+input[type=text], input[type=email]{
   font-size:22px;
   display:block;
   background:none;
@@ -354,6 +377,7 @@ input, textarea {
   padding:5px 10px;
   border:1px solid $gray-light;
   border-radius:10px;
+    color:#ffffff;
   transition:border-color .25s ease, box-shadow .25s ease;
   &:focus {
 		outline:0;
@@ -364,6 +388,7 @@ input, textarea {
 .field-wrap {
   position:relative;
   margin-bottom:40px;
+    color:#ffffff;
 }
 
 .button {
@@ -392,14 +417,86 @@ outline:none;
   }
 }
 
-button1{
-	 border:20% solid $gray-light;
-	background-color:white;
-	width=50%;
-
+.button:hover{
+	background-color:#121a38;
+    color: white;
+    border: 2px solid #ffffff;
+	border-radius:50%;
 }
+
+
+.button1{
+	background-color:#314566;
+	border-radius:4px;
+    color: white;
+    padding: 14px 20px;
+	position: absolute;
+    margin: 3px 0;
+	margin-top:4px;
+    cursor: pointer;
+	display:block;
+	  width:46%;
+outline:none;
+  padding:15px 0;
+  font-size:2rem;
+  font-weight:$bold;
+  font-family:times;
+  letter-spacing:.1em;
+  background:$main;
+  /*transition:all.5s ease;
+  -webkit-appearance: none;
+  &:hover, &:focus {
+    background:$main-dark;
+  }*/
+-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
 }
 
+.button1:hover{
+	background-color: #121a38;
+    color: white;
+    border: 2px solid #ffffff;
+	border-radius:50%;
+}
+
+.button2{
+	background-color:#314566;
+	border-radius:4px;
+    color: white;
+    width:10%;
+	position: absolute;
+    cursor: pointer;
+	display:block;
+outline:none;
+  font-size:2rem;
+  font-weight:$bold;
+  font-family:times;
+  letter-spacing:.1em;
+  background:$main;
+  
+  /*transition:all.5s ease;
+  -webkit-appearance: none;
+  &:hover, &:focus {
+    background:$main-dark;
+  }*/
+-webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+}
+
+.button2:hover{
+	background-color: #121a38;
+    color: white;
+    border: 2px solid #ffffff;
+}
+
+.btn{
+	float:left;
+	bottom:20%;
+}
+.btn1{
+	float:right;
+	top:15%;
+}
 .forgot {
   margin-top:-20px;
   text-align:right;
@@ -438,13 +535,13 @@ table {
 
 th, td {
     text-align: left;
-    padding: 16px;
+    padding: 10px;
     height : 40%;
-    font-size : 12px;
+    font-size : 20px;
 }
 
 tr:nth-child(even){
-	background-color: #f2f2f2
+	background-color: #000000;
 }
 
 .mypagetable
@@ -556,6 +653,10 @@ footer{
     left:0px;
     right:0px;
     margin-bottom:0px;
+}
+input[type="radio"]{
+    -webkit-appearance: radio;
+    font-size:10px;
 }
 @media screen and (max-width: 1280px) {
     .tab { width:100%; }

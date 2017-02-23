@@ -11,16 +11,7 @@ import com.cummins.questions.Question;
 public class UserFactory {
 	Userdetail login;
 	Question ans;
-	public UserFactory()
-	{
-		
-	}
-	public UserFactory(DataBaseConn conn,	Userdetail log) {
-		login=log;
-		UserDetailsDB userDetail=new UserDetailsDB();
-		userDetail.getUserDetails(conn, login);
-		
-	}
+	
 	public Userdetail getLogin() {
 		return login;
 	}
